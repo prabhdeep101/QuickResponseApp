@@ -7,11 +7,62 @@
     android:background="@drawable/backgroundphoto"
     tools:context="com.example.quickresponseapp.MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/kaurisitting"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/talk_to_kauri"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:text="Talk to Kauri"
+        android:textStyle="bold"
         android:textColor="@color/white"
-        android:backgroundTint="#dda036" />
+        android:textSize="20sp"
+        android:backgroundTint="#dda036"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"
+        android:elevation="10dp"/>
+
+    <Button
+        android:id="@+id/message_button"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:text="Talk to Kauri"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:backgroundTint="#dda036"
+        android:layout_marginTop="135dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:elevation="10dp"/>
+
+    <Button
+        android:id="@+id/contacts_button"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:text="Contacts"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:backgroundTint="#dda036"
+        android:layout_marginTop="135dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:elevation="10dp" />
 
     <ImageButton
         android:id="@+id/emergency_button"
