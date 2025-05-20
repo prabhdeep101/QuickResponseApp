@@ -1,14 +1,12 @@
 package com.example.quickresponseapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.R
 
-class MainActivity : AppCompatActivity() {
+class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
+        setContentView(R.layout.fragment_settings)
     }
 }
