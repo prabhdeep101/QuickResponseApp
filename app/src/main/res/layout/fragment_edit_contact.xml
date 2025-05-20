@@ -3,106 +3,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundphoto"
-    android:padding="16dp" >
+    android:padding="16dp">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="90dp" >
+        android:layout_marginBottom="90dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
+            <!-- Update profile picture -->
             <FrameLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_profile_border"
-                android:padding="6dp" >
+                android:padding="6dp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
                     android:background="@drawable/profile_white_bg"
                     android:clipToOutline="true"
                     android:outlineProvider="background"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/kaurihead" />
             </FrameLayout>
 
-            <!-- Name Title -->
+            <!-- Page Title -->
             <TextView
                 android:id="@+id/text_heading_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="EDIT CONTACT / WHAKATIKAHIA HOAPĀ"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="16dp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <!-- Name Field -->
+            <!-- Update Name -->
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="NAME / INGOA"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
+                android:hint="NAME / INGOA"
                 android:padding="12dp"
-                android:textColorHint="#9E9E9E"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
 
-            <!-- Address Field -->
+            <!-- Update Address -->
             <EditText
                 android:id="@+id/edit_relation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ADDRESS / WĀHI NOHO"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
+                android:hint="ADDRESS / WĀHI NOHO"
                 android:padding="12dp"
-                android:textColorHint="#9E9E9E"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp"/>
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
 
-            <!-- Phone Field -->
+            <!-- Update Phone number -->
             <EditText
                 android:id="@+id/edit_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="PHONE NUMBER / NAMA WAEA"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
+                android:hint="PHONE NUMBER / NAMA WAEA"
                 android:inputType="phone"
                 android:padding="12dp"
-                android:textColorHint="#9E9E9E"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
 
-            <!-- Relationship Field -->
+            <!-- Update Relation -->
             <EditText
                 android:id="@+id/edit_relationship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="RELATIONSHIP / HONONGA"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
+                android:hint="RELATIONSHIP / HONONGA"
                 android:padding="12dp"
-                android:textColorHint="#9E9E9E"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
 
             <!-- Checkboxes -->
             <CheckBox
                 android:id="@+id/checkbox_oranga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?"
-                android:layout_marginTop="12dp" />
+                android:layout_marginTop="12dp"
+                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?" />
 
             <CheckBox
                 android:id="@+id/checkbox_default"
@@ -110,22 +112,22 @@
                 android:layout_height="wrap_content"
                 android:text="SET AS DEFAULT CONTACT?" />
 
-            <!-- Button Row -->
+            <!-- Save and Delete Button -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:layout_marginTop="10dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_save"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="SAVE"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/mustard"
+                    android:text="SAVE"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
@@ -133,10 +135,10 @@
                     android:id="@+id/button_delete"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    android:text="DELETE"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/mustard"
+                    android:text="DELETE"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -145,7 +147,7 @@
 
     </ScrollView>
 
-    <!-- Emergency Call Button - bottom left -->
+    <!-- Emergency Call Button -->
     <ImageButton
         android:id="@+id/emergency_button"
         android:layout_width="65dp"
@@ -153,7 +155,7 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="24dp"
         android:background="@null"
-        android:src="@drawable/emergencybutton"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/emergencybutton" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
