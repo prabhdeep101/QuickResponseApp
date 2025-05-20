@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Mustard">#DDA036</color>
+    <color name="mustard">#DDA036</color>
     <color name="DarkBlue">#0C4A9C</color>
+    <color name="LightGrey">#E3E2E2</color>
 </resources>
