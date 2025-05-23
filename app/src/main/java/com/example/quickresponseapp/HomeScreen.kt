@@ -28,6 +28,8 @@ class HomeScreen : AppCompatActivity() {
         // Open drawer when custom menu button is tapped
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.END)
+
         }
+
     }
 }
