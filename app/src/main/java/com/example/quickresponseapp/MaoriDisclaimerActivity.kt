@@ -6,11 +6,11 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.R
 
-class DisclaimerActivity : AppCompatActivity() {
+class MaoriDisclaimerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_disclaimer)
+        setContentView(R.layout.activity_maori_disclaimer)
 
         val acceptButton: Button = findViewById(R.id.acceptButton)
         acceptButton.setOnClickListener {
@@ -21,7 +21,7 @@ class DisclaimerActivity : AppCompatActivity() {
         }
         val translateButton: Button = findViewById(R.id.translateButton)
         translateButton.setOnClickListener {
-            startActivity(Intent(this, MaoriDisclaimerActivity::class.java))
+            startActivity(Intent(this, DisclaimerActivity::class.java))
             finish() // Optional: closes this screen
 
         }
