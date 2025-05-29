@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface ContactDao {
-    @Query("SELECT * FROM contacts")
+    @Query("SELECT * FROM contacts ORDER BY isDefault DESC, name ASC")
     fun getAllContacts(): LiveData<List<Contact>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
