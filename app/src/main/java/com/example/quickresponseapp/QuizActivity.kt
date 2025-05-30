@@ -56,12 +56,12 @@ class QuizActivity : AppCompatActivity() {
     private fun handleAnswer(answer: String) {
         answers.add(answer)
         when (currentIndex) {
-            0 -> currentIndex = 1 // Q1 → Q2
-            1 -> currentIndex = 2 // Q2 → Q3
+            0 -> currentIndex = if (answer == "No") 3 else 1 // Q1 → Q2
+            1 -> currentIndex = if (answer == "Yes") 3 else 2 // Q2 → Q3
             2 -> currentIndex = 3 // Q3 → Q4
             3 -> currentIndex = if (answer == "Yes") 4 else 8 // Q5 or Q9
-            4 -> currentIndex = 5 // Q6
-            5 -> currentIndex = 6 // Q7
+            4 -> currentIndex = if (answer == "Yes") 6 else 5 // Q6
+            5 -> currentIndex = if (answer == "Yes") 7 else 8 // Q7
             6 -> if (answer == "Yes") {
                 showEmergencyCall("Police")
                 return

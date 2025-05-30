@@ -26,6 +26,7 @@
         <activity android:name="com.example.quickresponseapp.MaoriDisclaimerActivity" />
         <activity android:name="com.example.quickresponseapp.DisclaimerActivity" />
         <activity android:name="com.example.quickresponseapp.QuizActivity" />
+        <activity android:name="com.example.quickresponseapp.EmergencyCallActivity" />
         <activity android:name="com.example.quickresponseapp.QuizResultActivity" />
         <activity android:name="com.example.quickresponseapp.HomeScreen" />
     </application>
