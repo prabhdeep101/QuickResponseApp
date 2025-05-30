@@ -41,18 +41,19 @@
     <!-- Bird image -->
 
     <!-- NO button -->
+
+    <!-- NO button -->
     <ImageView
         android:id="@+id/birdImage"
         android:layout_width="253dp"
         android:layout_height="341dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/kaurileftwing"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/questionText" />
 
-    <!-- NO button -->
     <Button
         android:id="@+id/noButton"
         android:layout_width="0dp"

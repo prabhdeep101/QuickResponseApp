@@ -1,8 +1,10 @@
 package com.example.quickresponseapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -28,6 +30,13 @@ class HomeScreen : AppCompatActivity() {
         // Open drawer when custom menu button is tapped
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.END)
+
+        }
+        val acceptButton: Button = findViewById(R.id.talk_to_kauri)
+        acceptButton.setOnClickListener {
+            startActivity(Intent(this, QuizActivity::class.java))
+            finish() // Optional: closes this screen
+
 
         }
 
