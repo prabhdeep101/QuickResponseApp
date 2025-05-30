@@ -1,8 +1,10 @@
 package com.example.quickresponseapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +34,7 @@ class QuizActivity : AppCompatActivity() {
         Question("Do you want to message someone?", R.drawable.kaurileftwing),
     )
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
@@ -45,6 +48,14 @@ class QuizActivity : AppCompatActivity() {
 
         yesButton.setOnClickListener { handleAnswer("Yes") }
         noButton.setOnClickListener { handleAnswer("No") }
+
+        val backButton: ImageButton = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            startActivity(Intent(this, HomeScreen::class.java))
+            finish() // Optional: closes this screen
+
+
+        }
     }
 
     private fun loadQuestion() {
@@ -88,4 +99,7 @@ class QuizActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+
 }
