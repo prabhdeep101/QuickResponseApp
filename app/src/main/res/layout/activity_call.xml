@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/kaurihead"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/titleText"
@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="911"
-        android:textStyle="bold"
-        android:textSize="50sp"
+        android:textStyle=""
+        android:textSize="45sp"
         android:textColor="#000"
         app:layout_constraintTop_toBottomOf="@id/logoImage"
         app:layout_constraintStart_toStartOf="parent"

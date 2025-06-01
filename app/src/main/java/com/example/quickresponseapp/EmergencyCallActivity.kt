@@ -19,10 +19,10 @@ class EmergencyCallActivity : AppCompatActivity() {
         setContentView(layout.activity_call)
 
         // Delay for 2 seconds then move to DisclaimerActivity
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, HomeScreen::class.java))
-            finish() // Close splash screen
-        }, 10000)
+        //Handler(Looper.getMainLooper()).postDelayed({
+          //  startActivity(Intent(this, HomeScreen::class.java))
+            //finish() // Close splash screen
+        //}, 10000)
 
         val endButton: ImageButton = findViewById(id.endButton)
         endButton.setOnClickListener {
