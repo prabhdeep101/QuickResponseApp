@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundphoto"
+    android:padding="16dp">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_marginBottom="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Contact profile picture wrapped in a frame -->
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_profile_border"
+                android:padding="6dp">
+
+                <ImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile_white_bg"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/kaurihead" />
+            </FrameLayout>
+
+            <!-- Contact name -->
+            <TextView
+                android:id="@+id/contact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Contacts Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Contact address -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="ADDRESS / WĀHI NOHO"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                tools:text="123 Example Street" />
+
+            <!-- Contact phone number -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="PHONE NUMBER / NAMA WAEA"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                tools:text="022 123 4567" />
+
+            <!-- Relation to child -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="RELATIONSHIP / HONONGA"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/contact_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                tools:text="Social Worker" />
+
+            <!-- Checkboxes Information -->
+            <TextView
+                android:id="@+id/text_oranga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="THIS PERSON IS ORANGA TAMARIKI CERTIFIED"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="THIS PERSON IS THE DEFAULT CONTACT"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Emergency Button -->
+    <ImageButton
+        android:id="@+id/emergency_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/emergencybutton" />
+
+    <!-- Edit button -->
+    <Button
+        android:id="@+id/button_edit"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/mustard"
+        android:text="EDIT"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

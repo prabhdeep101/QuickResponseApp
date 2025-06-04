@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundphoto"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="90dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Update profile picture -->
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_profile_border"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile_white_bg"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/kaurihead" />
+            </FrameLayout>
+
+            <!-- Page Title -->
+            <TextView
+                android:id="@+id/text_heading_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="EDIT CONTACT / WHAKATIKAHIA HOAPĀ"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Update Name -->
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="NAME / INGOA"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
+
+            <!-- Update Address -->
+            <EditText
+                android:id="@+id/edit_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="ADDRESS / WĀHI NOHO"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
+
+            <!-- Update Phone number -->
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="PHONE NUMBER / NAMA WAEA"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
+
+            <!-- Update Relation -->
+            <EditText
+                android:id="@+id/edit_relationship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="RELATIONSHIP / HONONGA"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#9E9E9E"
+                android:textSize="16sp" />
+
+            <!-- Checkboxes -->
+            <CheckBox
+                android:id="@+id/checkbox_oranga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?" />
+
+            <CheckBox
+                android:id="@+id/checkbox_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SET AS DEFAULT CONTACT?" />
+
+            <!-- Save and Delete Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/mustard"
+                    android:text="SAVE"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/mustard"
+                    android:text="DELETE"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Emergency Call Button -->
+    <ImageButton
+        android:id="@+id/emergency_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/emergencybutton" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

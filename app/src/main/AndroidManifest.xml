@@ -11,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickResponseApp"
         tools:targetApi="31">
+
+
+
         <activity
-            android:name="com.example.quickresponseapp.HomeScreenFragment"
+            android:name="com.example.quickresponseapp.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.quickresponseapp.MaoriDisclaimerActivity" />
+        <activity android:name="com.example.quickresponseapp.DisclaimerActivity" />
+        <activity android:name="com.example.quickresponseapp.QuizActivity" />
+        <activity android:name="com.example.quickresponseapp.EmergencyCallActivity" />
+        <activity android:name="com.example.quickresponseapp.QuizResultActivity" />
+        <activity android:name="com.example.quickresponseapp.HomeScreen" />
     </application>
+
 
 </manifest>
