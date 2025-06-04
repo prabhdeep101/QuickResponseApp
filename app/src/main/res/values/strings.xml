@@ -1,3 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QuickResponseApp</string>
+    <string name="select_language">SELECT LANGUAGE</string>
+    <string name="back">Back</string>
+    <string name="what_language">What language do you speak?</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="edit_contacts">EDIT CONTACTS</string>
+
+    <!-- Home Page -->
+    <string name="greeting_kauri">Kia ora! Im Kauri the Kākāpō!\nHow are you?</string>
+    <string name="help_prompt">Dont know? You can talk to me\nand I can help</string>
+    <string name="talk_to_kauri">Talk to Kauri</string>
+    <string name="messages">Messages</string>
+    <string name="contacts">Contacts</string>
+
+    <!-- pop out menu -->
+    <string name="Pop_out_edit_profile">Edit Profile</string>
+    <string name="settings">Settings</string>
+    <string name="about_kauri">About Kauri</string>
+
+    <!-- About Kauri -->
+    <string name="about">Kauri the Kākāpō is more than just a mascot, he’s your friendly helper and protector.\n\n Kauri grew up in a big, safe forest where all the birds looked after each other. One day, he heard about kids\n who were feeling scared or alone, and he knew he had to help.\n\n Now, Kauri flies into your phones to be by your side. He listens when you want to talk, shows you how to stay safe, and reminds you that you’re never alone.\n\n Kauri might be small, but his heart is strong and brave, <b> just like you.</b> If you ever need someone to talk to or help you find a safe path, Kauri is here for you.</string>
 </resources>
