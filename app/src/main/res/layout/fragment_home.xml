@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="@drawable/banner"
-                android:title="QuickResponseApp"
                 android:titleTextColor="@android:color/white"
                 app:titleCentered="true" />
 
@@ -64,23 +63,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
-            android:text="Kia ora! I'm Kauri the Kakapo!\n              How are you?"
+            android:text="@string/greeting_kauri"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/banner_frame" />
 
+        <!-- Talk to Kauri Button -->
         <TextView
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Don't know? You can talk to me\n              and I can help"
+            android:text="@string/help_prompt"
+            android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/text1"
             app:layout_constraintTop_toBottomOf="@id/text1" />
 
-        <!-- Talk to Kauri Button -->
         <Button
             android:id="@+id/talk_to_kauri"
             android:layout_width="0dp"
@@ -91,7 +91,7 @@
             android:backgroundTint="#dda036"
             android:elevation="10dp"
             android:paddingRight="40dp"
-            android:text="Talk to Kauri"
+            android:text="@string/talk_to_kauri"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -114,7 +114,7 @@
             android:backgroundTint="#dda036"
             android:elevation="10dp"
             android:paddingTop="15dp"
-            android:text="Messages"
+            android:text="@string/messages"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -136,7 +136,7 @@
             android:layout_marginEnd="16dp"
             android:backgroundTint="#dda036"
             android:elevation="10dp"
-            android:text="Contacts"
+            android:text="@string/contacts"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -176,15 +176,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/DarkBlue"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
         app:headerLayout="@layout/nav_header"
+        app:itemBackground="@drawable/nav_item_stacked"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:itemVerticalPadding="18dp"
         app:menu="@menu/nav_menu" />
-
 </androidx.drawerlayout.widget.DrawerLayout>
 
