@@ -11,8 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.todolist.R
-import com.example.todolist.databinding.FragmentEditContactBinding
+import com.example.quickresponseapp.R
+import com.example.quickresponseapp.databinding.FragmentEditContactBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,10 +22,21 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
     private val viewModel: AddEditContactViewModel by viewModels()
 
+    private val args: EditContactFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentEditContactBinding.bind(view)
+
+        val contact = args.contact
+
+        viewModel.contactName = contact.name
+        viewModel.contactPhone = contact.phone
+        viewModel.contactAddress = contact.address
+        viewModel.contactRelation = contact.relation
+        viewModel.isOrangaTamarikiApproved = contact.isOrangaTamarikiApproved
+        viewModel.isDefault = contact.isDefault
 
         binding.apply {
             editName.setText(viewModel.contactName)

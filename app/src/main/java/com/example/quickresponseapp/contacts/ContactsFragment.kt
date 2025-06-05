@@ -9,8 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.R
-import androidx.recyclerview.widget.ListAdapter
+import com.example.quickresponseapp.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +46,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
     }
 
     override fun onItemClick(contact: Contact) {
-        // Navigate to contact details fragment
+
     }
 
     override fun onCallClick(contact: Contact) {
