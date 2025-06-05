@@ -8,8 +8,7 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.R
-import com.example.todolist.R.*
+import com.example.quickresponseapp.R.*
 
 class EmergencyCallActivity : AppCompatActivity() {
 
