@@ -26,7 +26,7 @@ class EmergencyCallActivity : AppCompatActivity() {
 
         val endButton: ImageButton = findViewById(id.endButton)
         endButton.setOnClickListener {
-            startActivity(Intent(this, HomeScreen::class.java))
+            startActivity(Intent(this, HomeScreenFragment::class.java))
             finish() // Optional: closes this screen
 
 
