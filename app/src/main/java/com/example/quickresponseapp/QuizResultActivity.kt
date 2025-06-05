@@ -20,7 +20,7 @@ class QuizResultActivity : AppCompatActivity() {
 
         val backButton: Button = findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            startActivity(Intent(this, HomeScreen::class.java))
+            startActivity(Intent(this, HomeScreenFragment::class.java))
             finish() // Optional: closes this screen
 
 
