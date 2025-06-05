@@ -14,8 +14,8 @@
             android:id="@+id/action_contactsFragment_to_addContactFragment"
             app:destination="@id/addContactFragment" />
         <action
-            android:id="@+id/action_contactsFragment_to_editContactFragment"
-            app:destination="@id/editContactFragment" />
+            android:id="@+id/action_contactsFragment_to_contactDetailsFragment"
+            app:destination="@id/contactDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -30,7 +30,17 @@
             android:id="@+id/action_homeScreenFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.example.quickresponseapp.contacts.ContactDetailsFragment"
+        android:label="Contact Details">
+        <argument
+            android:name="contact"
+            app:argType="com.example.quickresponseapp.contacts.Contact" />
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_editContactFragment"
+            app:destination="@id/editContactFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.quickresponseapp.SettingsFragment"
@@ -48,8 +58,11 @@
     <fragment
         android:id="@+id/editContactFragment"
         android:name="com.example.quickresponseapp.contacts.EditContactFragment"
-        android:label="fragment_edit_contact"
-        tools:layout="@layout/fragment_edit_contact" />
+        android:label="Edit Contact">
+        <argument
+            android:name="contact"
+            app:argType="com.example.quickresponseapp.contacts.Contact" />
+    </fragment>
 
 
 </navigation>

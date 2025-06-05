@@ -16,7 +16,7 @@ class ContactsAdapter(
     private val listener: OnItemClickListener
 ) : ListAdapter<Contact, ContactsAdapter.ContactViewHolder>(DiffCallback()) {
 
-    inner class ContactViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val profileImage: ImageView = itemView.findViewById(R.id.image_profile)
         val nameText: TextView = itemView.findViewById(R.id.contact_name)
         val defaultLabel: TextView = itemView.findViewById(R.id.contact_default)
@@ -83,6 +83,7 @@ class ContactsAdapter(
     class DiffCallback : DiffUtil.ItemCallback<Contact>() {
         override fun areItemsTheSame(oldItem: Contact, newItem: Contact) =
             oldItem.id == newItem.id
+
         override fun areContentsTheSame(oldItem: Contact, newItem: Contact) =
             oldItem == newItem
     }
