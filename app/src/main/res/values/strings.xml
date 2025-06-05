@@ -7,6 +7,9 @@
     <string name="edit_profile">EDIT PROFILE</string>
     <string name="edit_contacts">EDIT CONTACTS</string>
 
+    <!--Global action bar -->
+    <string name ="QRA">Quick Response App</string>
+
     <!-- Home Page -->
     <string name="greeting_kauri">Kia ora! Im Kauri the Kākāpō!\nHow are you?</string>
     <string name="help_prompt">Dont know? You can talk to me\nand I can help</string>

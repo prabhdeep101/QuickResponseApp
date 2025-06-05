@@ -7,6 +7,9 @@
     <string name="edit_profile">WHAKAKĒ PROFILE</string>
     <string name="edit_contacts">WHAKAKĒ HOA</string>
 
+    <!--Global action bar -->
+    <string name ="QRA">Taupānga Urupare Tere</string>
+
     <!-- Home Page -->
     <string name="greeting_kauri">Kia ora! Ko Kauri te Kākāpō ahau!\nKei te pēhea koe?</string>
     <string name="help_prompt">Kāore i te mōhio? Kōrerotia mai ki\n ahau. Ākuanei ka āwhina au.</string>

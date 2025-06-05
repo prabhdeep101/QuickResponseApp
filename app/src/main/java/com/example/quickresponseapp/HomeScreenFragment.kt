@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
@@ -31,29 +32,19 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val drawerLayout = activity?.findViewById<DrawerLayout>(R.id.drawer_layout)
+        // Only nav drawer sizing logic (which is safe here)
         val navView = activity?.findViewById<NavigationView>(R.id.nav_view)
-        val menuButton = view.findViewById<MaterialButton>(R.id.menu_button)
-
         val drawerWidth = (Resources.getSystem().displayMetrics.widthPixels * 0.75).toInt()
         navView?.layoutParams?.width = drawerWidth
         navView?.requestLayout()
 
-        menuButton.setOnClickListener {
-            drawerLayout?.openDrawer(GravityCompat.END)
-        }
-
         val settingsButton = view.findViewById<ImageButton>(R.id.settings_button)
         settingsButton.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.settings_button, SettingsFragment())
-                .addToBackStack(null)
-                .commit()
+            findNavController().navigate(R.id.action_homeScreenFragment_to_settingsFragment)
         }
     }
-
 }
+

@@ -22,10 +22,22 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_contactsFragment"
             app:destination="@id/contactsFragment" />
+
+        <action
+            android:id="@+id/action_homeScreenFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditContactFragment"
         android:name="com.example.quickresponseapp.contacts.AddEditContactFragment"
         android:label="fragment_edit_contact"
         tools:layout="@layout/fragment_edit_contact" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.quickresponseapp.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+
 </navigation>
