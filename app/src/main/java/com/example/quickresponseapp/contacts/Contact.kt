@@ -1,8 +1,11 @@
 package com.example.quickresponseapp.contacts
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "contacts")
 data class Contact(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -13,4 +16,4 @@ data class Contact(
     val isDefault: Boolean = false,
     val isOrangaTamarikiApproved: Boolean = false,
     val profileImageUri: String? = null
-)
+) : Parcelable

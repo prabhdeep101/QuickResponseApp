@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.R
+
 
 class QuizActivity : AppCompatActivity() {
     private lateinit var questionText: TextView

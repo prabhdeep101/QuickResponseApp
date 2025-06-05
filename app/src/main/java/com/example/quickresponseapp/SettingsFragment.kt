@@ -10,7 +10,6 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.todolist.R
 import com.google.android.material.button.MaterialButton
 import java.util.*
 
