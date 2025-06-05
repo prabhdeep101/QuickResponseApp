@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickresponseapp.R
-import androidx.recyclerview.widget.ListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +46,9 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
     }
 
     override fun onItemClick(contact: Contact) {
-        // Navigate to contact details fragment
+        val action = ContactsFragmentDirections.actionContactsFragmentToContactDetailsFragment2(contact)
+        findNavController().navigate(action)
+
     }
 
     override fun onCallClick(contact: Contact) {

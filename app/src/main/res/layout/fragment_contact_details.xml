@@ -5,7 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundphoto"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context="com.example.quickresponseapp.contacts.ContactDetailsFragment">
+
+    <!-- Back Button -->
+    <TextView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:focusable="true"
+        android:text="@string/back"
+        android:textColor="#dda036"
+        android:textSize="18sp" />
 
     <!-- Scrollable content -->
     <ScrollView
@@ -109,6 +124,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/text_default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

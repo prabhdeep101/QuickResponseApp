@@ -1,16 +1,11 @@
 package com.example.quickresponseapp
 
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.quickresponseapp.R
-import com.example.todolist.databinding.ActivityMainBinding
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

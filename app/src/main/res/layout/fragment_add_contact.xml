@@ -6,7 +6,7 @@
     android:background="@drawable/backgroundphoto"
     tools:context="com.example.quickresponseapp.contacts.AddContactFragment">
 
-    <!-- Back Button (at top always) -->
+    <!-- Back Button -->
     <TextView
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
