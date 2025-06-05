@@ -14,7 +14,7 @@ class MaoriDisclaimerActivity : AppCompatActivity() {
 
         val acceptButton: Button = findViewById(R.id.acceptButton)
         acceptButton.setOnClickListener {
-            startActivity(Intent(this, HomeScreen::class.java))
+            startActivity(Intent(this, HomeScreenFragment::class.java))
             finish() // Optional: closes this screen
 
 
