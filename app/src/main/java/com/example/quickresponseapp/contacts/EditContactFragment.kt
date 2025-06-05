@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.quickresponseapp.R
 import com.example.quickresponseapp.databinding.FragmentEditContactBinding
 import com.google.android.material.snackbar.Snackbar
