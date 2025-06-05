@@ -11,12 +11,13 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.example.todolist.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import java.util.*
 
-class HomeScreenFragment : AppCompatActivity() {
+class HomeScreenFragment : Fragment(R.layout.fragment_home) {
 
     override fun attachBaseContext(newBase: Context?) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(newBase)
