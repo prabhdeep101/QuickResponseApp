@@ -46,6 +46,8 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
     }
 
     override fun onItemClick(contact: Contact) {
+        val action = ContactsFragmentDirections.actionContactsFragmentToContactDetailsFragment2(contact)
+        findNavController().navigate(action)
 
     }
 

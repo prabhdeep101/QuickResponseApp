@@ -25,11 +25,11 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
     private val args: EditContactFragmentArgs by navArgs()
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val binding = FragmentEditContactBinding.bind(view)
-
         val contact = args.contact
 
         viewModel.contactName = contact.name
@@ -65,7 +65,7 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
             }
 
             buttonDelete.setOnClickListener {
-                // Optionally implement delete here
+                viewModel.onDeleteClick(contact)
             }
         }
 
@@ -82,7 +82,7 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
                                 "add_edit_result",
                                 bundleOf("add_edit_result" to event.result)
                             )
-                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.contactsFragment)
                         }
                     }
                 }

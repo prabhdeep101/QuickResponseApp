@@ -7,7 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.quickresponseapp.R
 import com.example.quickresponseapp.databinding.FragmentContactDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
 
     private val args: ContactDetailsFragmentArgs by navArgs()
@@ -15,39 +17,32 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentContactDetailsBinding.bind(view)
-
         val contact = args.contact
 
-        // Populate fields
+        val binding = FragmentContactDetailsBinding.bind(view)
+
         binding.apply {
             contactName.text = contact.name
+            contactAddress.text = contact.address
             contactPhone.text = contact.phone
             contactRelation.text = contact.relation
-            contactAddress.text = contact.address
 
-            textOranga.text = if (contact.isOrangaTamarikiApproved) {
-                "THIS PERSON IS ORANGA TAMARIKI CERTIFIED"
-            } else {
-                "NOT ORANGA TAMARIKI CERTIFIED"
-            }
+            textOranga.visibility = if (contact.isOrangaTamarikiApproved) View.VISIBLE else View.GONE
+            textDefault.visibility = if (contact.isDefault) View.VISIBLE else View.GONE
 
-            // Similarly for default:
-            // You can add another TextView ID if needed
-            // Example:
-            // contactDefault.text = if (contact.isDefault) "DEFAULT CONTACT" else "NOT DEFAULT"
-
-            // Profile image
-            if (contact.profileImageUri != null) {
-                imageProfile.setImageURI(android.net.Uri.parse(contact.profileImageUri))
-            } else {
-                imageProfile.setImageResource(R.drawable.kaurihead)
-            }
-
-            // Edit button
+            // Edit button click
             buttonEdit.setOnClickListener {
-                val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToEditContactFragment(contact)
+                val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToEditContactFragment2(contact)
                 findNavController().navigate(action)
+            }
+
+            // Back button click
+            backButton.setOnClickListener {
+                findNavController().navigateUp()
+            }
+
+            emergencyButton.setOnClickListener {
+                // Optional: navigate to Emergency or open dialer
             }
         }
     }

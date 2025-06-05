@@ -85,6 +85,13 @@ class AddEditContactViewModel @Inject constructor(
         }
     }
 
+    fun onDeleteClick(contact: Contact) {
+        viewModelScope.launch {
+            contactDao.deleteContact(contact)
+            addEditContactEventChannel.send(AddEditContactEvent.NavigateBackWithResult(DELETE_CONTACT_RESULT_OK))
+        }
+    }
+
     private fun createContact(contact: Contact) = viewModelScope.launch {
         contactDao.insertContact(contact)
         addEditContactEventChannel.send(AddEditContactEvent.NavigateBackWithResult(ADD_CONTACT_RESULT_OK))

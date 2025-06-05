@@ -13,4 +13,7 @@ interface ContactDao {
 
     @Delete
     suspend fun deleteContact(contact: Contact)
+
+    @Query("SELECT * FROM contacts WHERE id = :id LIMIT 1")
+    fun getContactById(id: Int): LiveData<Contact>
 }
