@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/backgroundphoto"
     android:padding="16dp"
-    tools:context="com.example.quickresponseapp.contacts.AddEditContactFragment">
+    tools:context="com.example.quickresponseapp.contacts.EditContactFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="16dp"
                 android:text="EDIT CONTACT / WHAKATIKAHIA HOAPĀ"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <!-- Update Name -->
@@ -62,7 +62,7 @@
 
             <!-- Update Address -->
             <EditText
-                android:id="@+id/edit_relation"
+                android:id="@+id/edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

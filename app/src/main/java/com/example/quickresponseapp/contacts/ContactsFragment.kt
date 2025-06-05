@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
@@ -36,7 +37,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
 
         // Add contact button
         view.findViewById<FloatingActionButton>(R.id.fab_add_contact).setOnClickListener {
-            // Add
+            findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
         }
 
         // Emergency call button

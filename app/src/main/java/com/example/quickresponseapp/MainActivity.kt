@@ -11,7 +11,9 @@ import com.example.todolist.R
 import com.example.todolist.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

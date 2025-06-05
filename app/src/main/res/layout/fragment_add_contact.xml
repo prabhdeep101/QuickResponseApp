@@ -1,14 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundphoto"
-    tools:context="com.example.quickresponseapp.contacts.AddEditContactFragment">
+    tools:context="com.example.quickresponseapp.contacts.AddContactFragment">
 
+    <!-- Back Button (at top always) -->
+    <TextView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:focusable="true"
+        android:text="@string/back"
+        android:textColor="#dda036"
+        android:textSize="18sp" />
+
+    <!-- ScrollView with content -->
     <ScrollView
+        android:id="@+id/scroll_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -21,7 +38,7 @@
             <FrameLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/bg_profile_border"
                 android:padding="6dp">
 
@@ -96,14 +113,13 @@
                 android:textColorHint="#9E9E9E"
                 android:textSize="16sp" />
 
+            <!-- Checkboxes -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="start"
                 android:orientation="vertical">
 
-                <!-- Checkboxes -->
                 <CheckBox
                     android:id="@+id/checkbox_oranga"
                     android:layout_width="wrap_content"
@@ -120,7 +136,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Emergency Button -->
+    <!-- Emergency Button (Floating) -->
     <ImageButton
         android:id="@+id/emergency_button"
         android:layout_width="65dp"
@@ -131,7 +147,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/emergencybutton" />
 
-    <!-- Save Button -->
+    <!-- Save Button (bottom center) -->
     <Button
         android:id="@+id/button_save"
         android:layout_width="120dp"
