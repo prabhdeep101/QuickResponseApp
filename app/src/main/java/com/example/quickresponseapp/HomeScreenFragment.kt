@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.preference.PreferenceManager
+import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -19,8 +20,9 @@ import java.util.*
 
 class HomeScreenFragment : Fragment(R.layout.fragment_home) {
 
-    override fun attachBaseContext(newBase: Context?) {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(newBase)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val langCode = prefs.getString("app_lang", "en") ?: "en"
 
         val locale = Locale(langCode)
@@ -29,41 +31,32 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         val config = Configuration()
         config.setLocale(locale)
 
-        val context = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            newBase?.createConfigurationContext(config)
-        } else {
-            @Suppress("DEPRECATION")
-            newBase?.resources?.updateConfiguration(config, newBase.resources.displayMetrics)
-            newBase
-        }
-
-        super.attachBaseContext(context)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_home)
 
-        // Pop-out menu setup
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        val navView = findViewById<NavigationView>(R.id.nav_view)
-        val menuButton = findViewById<MaterialButton>(R.id.menu_button)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val drawerLayout = activity?.findViewById<DrawerLayout>(R.id.drawer_layout)
+        val navView = activity?.findViewById<NavigationView>(R.id.nav_view)
+        val menuButton = view.findViewById<MaterialButton>(R.id.menu_button)
 
         val drawerWidth = (Resources.getSystem().displayMetrics.widthPixels * 0.75).toInt()
-        navView.layoutParams.width = drawerWidth
-        navView.requestLayout()
+        navView?.layoutParams?.width = drawerWidth
+        navView?.requestLayout()
 
         menuButton.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.END)
+            drawerLayout?.openDrawer(GravityCompat.END)
         }
 
-        //settings button
-        val settingsButton = findViewById<ImageButton>(R.id.settings_button)
+        val settingsButton = view.findViewById<ImageButton>(R.id.settings_button)
         settingsButton.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(android.R.id.content, SettingsFragment())
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.settings_button, SettingsFragment()) // Use your actual container ID
                 .addToBackStack(null)
                 .commit()
         }
     }
+
 }
