@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.todolist'
+    namespace 'com.example.quickresponseapp'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.todolist"
+        applicationId "com.example.quickresponseapp"
         minSdk 28
         targetSdk 34
         versionCode 1

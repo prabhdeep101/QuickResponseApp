@@ -45,6 +45,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         settingsButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreenFragment_to_settingsFragment)
         }
+
+        val contactsButton = view.findViewById<MaterialButton>(R.id.contacts_button)
+        contactsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeScreenFragment_to_contactsFragment)
+        }
     }
 }
 

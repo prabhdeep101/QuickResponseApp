@@ -12,33 +12,33 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
-import com.example.todolist.databinding.FragmentAddContactBinding
+import com.example.todolist.databinding.FragmentEditContactBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddEditContactFragment : Fragment(R.layout.fragment_add_contact) {
+class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
     private val viewModel: AddEditContactViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentAddContactBinding.bind(view)
+        val binding = FragmentEditContactBinding.bind(view)
 
         binding.apply {
-            addContactname.setText(viewModel.contactName)
-            addContactphone.setText(viewModel.contactPhone)
-            addContactaddress.setText(viewModel.contactAddress)
-            addContactrelationship.setText(viewModel.contactRelation)
+            editName.setText(viewModel.contactName)
+            editPhone.setText(viewModel.contactPhone)
+            editAddress.setText(viewModel.contactAddress)
+            editRelationship.setText(viewModel.contactRelation)
             checkboxOranga.isChecked = viewModel.isOrangaTamarikiApproved
             checkboxDefault.isChecked = viewModel.isDefault
 
-            addContactname.addTextChangedListener { viewModel.contactName = it.toString() }
-            addContactphone.addTextChangedListener { viewModel.contactPhone = it.toString() }
-            addContactaddress.addTextChangedListener { viewModel.contactAddress = it.toString()}
-            addContactrelationship.addTextChangedListener { viewModel.contactRelation = it.toString() }
+            editName.addTextChangedListener { viewModel.contactName = it.toString() }
+            editPhone.addTextChangedListener { viewModel.contactPhone = it.toString() }
+            editAddress.addTextChangedListener { viewModel.contactAddress = it.toString() }
+            editRelationship.addTextChangedListener { viewModel.contactRelation = it.toString() }
 
             checkboxOranga.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.isOrangaTamarikiApproved = isChecked
@@ -51,6 +51,10 @@ class AddEditContactFragment : Fragment(R.layout.fragment_add_contact) {
             buttonSave.setOnClickListener {
                 viewModel.onSaveClick()
             }
+
+            buttonDelete.setOnClickListener {
+                // Optionally implement delete here
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -61,14 +65,14 @@ class AddEditContactFragment : Fragment(R.layout.fragment_add_contact) {
                             Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
                         }
                         is AddEditContactViewModel.AddEditContactEvent.NavigateBackWithResult -> {
-                            binding.addContactname.clearFocus()
+                            binding.editName.clearFocus()
                             setFragmentResult(
                                 "add_edit_result",
                                 bundleOf("add_edit_result" to event.result)
                             )
                             findNavController().popBackStack()
                         }
-                    }.exhaustive
+                    }
                 }
             }
         }

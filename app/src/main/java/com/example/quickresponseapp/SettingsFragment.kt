@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
+import com.google.android.material.button.MaterialButton
 import java.util.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -42,6 +43,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        val editContactsButton = view.findViewById<MaterialButton>(R.id.edit_contact_btn)
+        editContactsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_contactsFragment)
         }
 
         view.findViewById<TextView>(R.id.back_button).setOnClickListener {
