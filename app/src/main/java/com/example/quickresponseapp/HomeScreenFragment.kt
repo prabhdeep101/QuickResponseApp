@@ -53,7 +53,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         val settingsButton = view.findViewById<ImageButton>(R.id.settings_button)
         settingsButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.settings_button, SettingsFragment()) 
+                .replace(R.id.settings_button, SettingsFragment())
                 .addToBackStack(null)
                 .commit()
         }
