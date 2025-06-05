@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        /*val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val navView = findViewById<NavigationView>(R.id.nav_view)
         val menuButton = findViewById<MaterialButton>(R.id.menu_button)
 
@@ -24,6 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.END)
-        }
+        }*/
     }
 }
