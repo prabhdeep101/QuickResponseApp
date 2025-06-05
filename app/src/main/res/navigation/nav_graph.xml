@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreenFragment">
 
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.quickresponseapp.contacts.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" >
+        <action
+            android:id="@+id/action_contactsFragment_to_addEditContactFragment"
+            app:destination="@id/addEditContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.quickresponseapp.HomeScreenFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditContactFragment"
+        android:name="com.example.quickresponseapp.contacts.AddEditContactFragment"
+        android:label="fragment_edit_contact"
+        tools:layout="@layout/fragment_edit_contact" />
 </navigation>

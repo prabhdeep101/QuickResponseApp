@@ -2,8 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/backgroundphoto"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context="com.example.quickresponseapp.contacts.AddEditContactFragment">
 
     <ScrollView
         android:layout_width="match_parent"
