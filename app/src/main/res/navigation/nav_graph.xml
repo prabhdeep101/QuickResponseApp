@@ -65,6 +65,11 @@
             android:name="contact"
             app:argType="com.example.quickresponseapp.contacts.Contact" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutKauriFragment"
+        android:name="com.example.quickresponseapp.AboutKauriFragment"
+        android:label="about_kauri"
+        tools:layout="@layout/about_kauri" />
 
 
 </navigation>

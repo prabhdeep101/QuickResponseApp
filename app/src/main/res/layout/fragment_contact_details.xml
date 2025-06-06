@@ -8,19 +8,6 @@
     android:padding="16dp"
     tools:context="com.example.quickresponseapp.contacts.ContactDetailsFragment">
 
-    <!-- Back Button -->
-    <TextView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:drawablePadding="8dp"
-        android:focusable="true"
-        android:text="@string/back"
-        android:textColor="#dda036"
-        android:textSize="18sp" />
 
     <!-- Scrollable content -->
     <ScrollView
@@ -35,11 +22,26 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <!-- Back Button -->
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="16dp"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:focusable="true"
+                android:text="@string/back"
+                android:textColor="#dda036"
+                android:textSize="18sp" />
+
+
             <!-- Contact profile picture wrapped in a frame -->
             <FrameLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/bg_profile_border"
                 android:padding="6dp">
 

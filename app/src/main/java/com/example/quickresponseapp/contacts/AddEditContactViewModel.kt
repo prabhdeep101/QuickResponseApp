@@ -62,6 +62,16 @@ class AddEditContactViewModel @Inject constructor(
             return
         }
 
+        if (contactPhone.isBlank()) {
+            showInvalidInputMessage("Phone number cannot be empty")
+            return
+        }
+
+        if (contactRelation.isBlank()) {
+            showInvalidInputMessage("Relationship cannot be empty")
+            return
+        }
+
         if (contact != null) {
             val updatedContact = contact.copy(
                 name = contactName,

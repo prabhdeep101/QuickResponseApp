@@ -6,39 +6,40 @@
     android:background="@drawable/backgroundphoto"
     tools:context="com.example.quickresponseapp.contacts.AddContactFragment">
 
-    <!-- Back Button -->
-    <TextView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:drawablePadding="8dp"
-        android:focusable="true"
-        android:text="@string/back"
-        android:textColor="#dda036"
-        android:textSize="18sp" />
 
     <!-- ScrollView with content -->
     <ScrollView
-        android:id="@+id/scroll_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
-        android:padding="16dp">
+        android:layout_marginBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:padding="10dp"
             android:orientation="vertical">
+
+            <!-- Back Button -->
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="16dp"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:focusable="true"
+                android:text="@string/back"
+                android:textColor="#dda036"
+                android:textSize="18sp" />
+
 
             <!-- Profile Picture -->
             <FrameLayout
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/bg_profile_border"
                 android:padding="6dp">
 
