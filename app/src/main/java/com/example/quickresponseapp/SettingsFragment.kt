@@ -1,6 +1,6 @@
 package com.example.quickresponseapp
 
-import android.content.res.Configuration
+import android.content.Context
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.View
@@ -11,14 +11,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
-import java.util.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
+
+    override fun onAttach(context: Context) {
+        super.onAttach(LangHelper.applySavedLocale(context))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Language dropdown setup
         val langSelect = view.findViewById<Spinner>(R.id.lang_select)
         val adapter = ArrayAdapter(
             requireContext(),
@@ -35,8 +37,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
                 val selectedLang = if (position == 0) "en" else "mi"
                 if (selectedLang != savedLang) {
-                    setLocale(selectedLang)
                     prefs.edit().putString("app_lang", selectedLang).apply()
+                    LangHelper.updateLocale(requireContext(), selectedLang)
                     requireActivity().recreate()
                 }
             }
@@ -52,13 +54,5 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         view.findViewById<TextView>(R.id.back_button).setOnClickListener {
             findNavController().navigateUp()
         }
-    }
-
-    private fun setLocale(langCode: String) {
-        val locale = Locale(langCode)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.setLocale(locale)
-        requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
     }
 }

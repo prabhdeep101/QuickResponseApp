@@ -24,4 +24,10 @@
 
     <!-- About Kauri -->
     <string name="about">Kauri the Kākāpō is more than just a mascot, he’s your friendly helper and protector.\n\n Kauri grew up in a big, safe forest where all the birds looked after each other. One day, he heard about kids\n who were feeling scared or alone, and he knew he had to help.\n\n Now, Kauri flies into your phones to be by your side. He listens when you want to talk, shows you how to stay safe, and reminds you that you’re never alone.\n\n Kauri might be small, but his heart is strong and brave, <b> just like you.</b> If you ever need someone to talk to or help you find a safe path, Kauri is here for you.</string>
+
+    <!-- Disclaimer -->
+    <string name="disclaimer_title">DISCLAIMER</string>
+    <string name="accept">ACCEPT</string>
+    <string name="disclaimer"> This app is a prototype developed for educational purposes as part of a student project in collaboration with AWAI. It is not an official emergency service, nor is it intended to replace professional help or legal guidance.\n\nAll contact names, profiles, and data used in this app are simulated for demonstration purposes only. This app is not live or fully functional.\n\nFeedback gathered from this prototype will help guide future development.</string>
+    <string name="langselect">TE REO MAORI</string>
 </resources>

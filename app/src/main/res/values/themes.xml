@@ -14,4 +14,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="navigationViewStyle">@style/NavigationViewStyle</item>
     </style>
+
+    <style name="Theme.QuickResponseApp.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

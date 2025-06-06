@@ -10,12 +10,10 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
-        // Delay for 2 seconds then move to DisclaimerActivity
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, DisclaimerActivity::class.java))
-            finish() // Close splash screen
-        }, 2000)
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }, 1500)
     }
 }
