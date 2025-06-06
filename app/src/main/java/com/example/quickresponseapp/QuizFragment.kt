@@ -1,16 +1,18 @@
 package com.example.quickresponseapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.todolist.R
 
-
-class QuizActivity : AppCompatActivity() {
+class QuizFragment : Fragment(R.layout.fragment_quiz) {
     private lateinit var questionText: TextView
     private lateinit var kauriImage: ImageView
     private lateinit var yesButton: Button
@@ -18,10 +20,12 @@ class QuizActivity : AppCompatActivity() {
 
     private var currentIndex = 0
     private val answers = mutableListOf<String>()
+
     data class Question(
         val text: String,
         val imageResId: Int
     )
+
     private val questions = listOf(
         Question("Are you safe?", R.drawable.kaurileftwing),
         Question("Are you hurt?", R.drawable.kaurirightwing),
@@ -30,31 +34,27 @@ class QuizActivity : AppCompatActivity() {
         Question("Do you want to talk to the Police?", R.drawable.kaurileftwing),
         Question("Do you want to talk to the Ambulance?", R.drawable.kaurirightwing),
         Question("Do you want me to call the Police?", R.drawable.kaurileftwing),
-        Question("Do you want me to call the Ambulance?", R.drawable.kaurirightwing),
-        Question("Do you want to message someone?", R.drawable.kaurileftwing),
+        Question("Do you want me to call the Ambulance?", R.drawable.kaurirightwing)
     )
 
-    @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        questionText = findViewById(R.id.questionText)
-        kauriImage = findViewById(R.id.birdImage)
-        yesButton = findViewById(R.id.yesButton)
-        noButton = findViewById(R.id.noButton)
+        questionText = view.findViewById(R.id.questionText)
+        kauriImage = view.findViewById(R.id.birdImage)
+        yesButton = view.findViewById(R.id.yesButton)
+        noButton = view.findViewById(R.id.noButton)
 
         loadQuestion()
 
         yesButton.setOnClickListener { handleAnswer("Yes") }
         noButton.setOnClickListener { handleAnswer("No") }
 
-        val backButton: ImageButton = findViewById(R.id.backButton)
+        val backButton: ImageButton = view.findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            startActivity(Intent(this, HomeScreenFragment::class.java))
-            finish() // Optional: closes this screen
-
-
+            val intent = Intent(requireContext(), HomeScreen::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 
@@ -67,39 +67,39 @@ class QuizActivity : AppCompatActivity() {
     private fun handleAnswer(answer: String) {
         answers.add(answer)
         when (currentIndex) {
-            0 -> currentIndex = if (answer == "No") 3 else 1 // Q1 → Q2
-            1 -> currentIndex = if (answer == "Yes") 3 else 2 // Q2 → Q3
-            2 -> currentIndex = 3 // Q3 → Q4
-            3 -> currentIndex = if (answer == "Yes") 4 else 8 // Q5 or Q9
-            4 -> currentIndex = if (answer == "Yes") 6 else 5 // Q6
-            5 -> currentIndex = if (answer == "Yes") 7 else 8 // Q7
-            6 -> if (answer == "Yes") {
-                showEmergencyCall("Police")
-                return
-            } else currentIndex = 7
-            7 -> if (answer == "Yes") {
-                showEmergencyCall("Ambulance")
-                return
-            } else currentIndex = 8
-            8 -> showSummary()
+            0 -> currentIndex = if (answer == "No") 3 else 1
+            1 -> currentIndex = if (answer == "Yes") 3 else 2
+            2 -> currentIndex = 3
+            3 -> currentIndex = if (answer == "Yes") 4 else 7
+            4 -> currentIndex = if (answer == "Yes") 6 else 5
+            5 -> currentIndex = if (answer == "Yes") 6 else 7
+            6 -> {
+                if (answer == "Yes") {
+                    showEmergencyCall("Police")
+                    return
+                } else currentIndex = 7
+            }
+            7 -> {
+                if (answer == "Yes") {
+                    showEmergencyCall("Ambulance")
+                    return
+                } else showSummary()
+            }
         }
         loadQuestion()
     }
 
     private fun showEmergencyCall(service: String) {
-        val intent = Intent(this, EmergencyCallActivity::class.java)
+        val intent = Intent(requireContext(), HomeScreen::class.java)
         intent.putExtra("service", service)
         startActivity(intent)
-        finish()
+        requireActivity().finish()
     }
 
     private fun showSummary() {
-        val intent = Intent(this, QuizResultActivity::class.java)
+        val intent = Intent(requireContext(), QuizResultFargment::class.java)
         intent.putStringArrayListExtra("answers", ArrayList(answers))
         startActivity(intent)
-        finish()
+        requireActivity().finish()
     }
-
-
-
 }
