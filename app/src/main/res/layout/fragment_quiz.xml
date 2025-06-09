@@ -42,7 +42,7 @@
     <ImageView
         android:id="@+id/birdImage"
         android:layout_width="253dp"
-        android:layout_height="341dp"
+        android:layout_height="300dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/kaurileftwing"
         app:layout_constraintTop_toBottomOf="@id/questionText"
@@ -58,7 +58,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
         android:text="NO"
-        android:backgroundTint="#F57C00"
+        android:backgroundTint="@color/mustard"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/birdImage"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:text="YES"
-        android:backgroundTint="#9FF500"
+        android:backgroundTint="@color/mustard"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/birdImage"
         app:layout_constraintStart_toEndOf="@id/noButton"
@@ -91,5 +91,18 @@
         android:src="@drawable/emergencybutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Home button -->
+    <ImageButton
+        android:id="@+id/home_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/homebutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

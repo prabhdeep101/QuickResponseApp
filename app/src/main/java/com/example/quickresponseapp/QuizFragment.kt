@@ -1,10 +1,7 @@
 package com.example.quickresponseapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -13,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 class QuizFragment : Fragment(R.layout.fragment_quiz) {
+
     private lateinit var questionText: TextView
     private lateinit var kauriImage: ImageView
     private lateinit var yesButton: Button
@@ -28,13 +26,14 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
     private val questions = listOf(
         Question("Are you safe?", R.drawable.kaurileftwing),
-        Question("Are you hurt?", R.drawable.kaurirightwing),
+        Question("Are you hurt?", R.drawable.bothwingsout),
         Question("Do you feel scared?", R.drawable.kaurileftwing),
         Question("Do you want to talk to someone?", R.drawable.kaurirightwing),
-        Question("Do you want to talk to the Police?", R.drawable.kaurileftwing),
+        Question("Do you want to talk to the Police?", R.drawable.bothwingsout),
         Question("Do you want to talk to the Ambulance?", R.drawable.kaurirightwing),
         Question("Do you want me to call the Police?", R.drawable.kaurileftwing),
-        Question("Do you want me to call the Ambulance?", R.drawable.kaurirightwing)
+        Question("Do you want me to call the Ambulance?", R.drawable.bothwingsout),
+        Question("Do you want to talk to someone else?", R.drawable.kaurirightwing)
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,9 +49,30 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
         yesButton.setOnClickListener { handleAnswer("Yes") }
         noButton.setOnClickListener { handleAnswer("No") }
 
-        val backButton: ImageButton = view.findViewById(R.id.backButton)
+        // Back button to go to previous question
+        val backButton: TextView = view.findViewById(R.id.back_button)
         backButton.setOnClickListener {
+            if (currentIndex > 0 && answers.isNotEmpty()) {
+                // Go back one and remove answer submitted
+                currentIndex = getPreviousIndex(currentIndex, answers.last())
+                answers.removeAt(answers.size - 1)
+                loadQuestion()
+            } else {
+                // If at first question, return to home
+                findNavController().navigate(R.id.homeScreenFragment)
+            }
+        }
+
+        // Home button
+        val homeButton: ImageButton = view.findViewById(R.id.home_button)
+        homeButton.setOnClickListener {
             findNavController().navigate(R.id.homeScreenFragment)
+        }
+
+        // Emergency button
+        val emergencyButton: ImageButton = view.findViewById(R.id.emergency_button)
+        emergencyButton.setOnClickListener {
+            //findNavController().navigate(R.id.emergencyCallFragment) // when you add this
         }
     }
 
@@ -64,33 +84,82 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
     private fun handleAnswer(answer: String) {
         answers.add(answer)
-        when (currentIndex) {
-            0 -> currentIndex = if (answer == "No") 3 else 1
-            1 -> currentIndex = if (answer == "Yes") 3 else 2
-            2 -> currentIndex = 3
-            3 -> currentIndex = if (answer == "Yes") 4 else 7
-            4 -> currentIndex = if (answer == "Yes") 6 else 5
-            5 -> currentIndex = if (answer == "Yes") 6 else 7
-            6 -> {
-                if (answer == "Yes") {
-                    showEmergencyCall("Police")
-                    return
-                } else currentIndex = 7
-            }
-            7 -> {
-                if (answer == "Yes") {
-                    showEmergencyCall("Ambulance")
-                    return
-                } else showSummary()
-            }
+        currentIndex = getNextIndex(currentIndex, answer)
+
+        // If we reached a terminal state (emergency or result), trigger:
+        if (currentIndex == -1) {
+            showEmergencyCall("Police")
+            return
+        } else if (currentIndex == -2) {
+            showEmergencyCall("Ambulance")
+            return
+        } else if (currentIndex == -3) {
+            showSummary()
+            return
+        } else if (currentIndex == -4) {
+            showContactsScreen()
+            return
         }
+
         loadQuestion()
     }
 
-    private fun showEmergencyCall(service: String) {
-        // Add emergency call screen
+    // Logic to determine next index
+    private fun getNextIndex(index: Int, answer: String): Int {
+        return when (index) {
+            // Q1 → Q5 or Q2
+            0 -> if (answer == "No") 4 else 1
+            // Q2 → Q5 or Q3
+            1 -> if (answer == "Yes") 4 else 2
+            // Q3 → Q4 (no branch)
+            2 -> 3
+            // Q4 → Q5 (no branch)
+            3 -> 4
+            // Q5 → Emergency or Q6
+            4 -> if (answer == "Yes") -1 else 5
+            // Q6 → Emergency or Q7
+            5 -> if (answer == "Yes") -2 else 6
+            // Q7 → Emergency or Q8
+            6 -> if (answer == "Yes") -1 else 7
+            // Q8 → Emergency or Q9
+            7 -> if (answer == "Yes") -2 else 8
+            // Q9 → Contacts screen (-4) or Results (-3)
+            8 -> if (answer == "Yes") -4 else -3
+            else -> 0
+        }
     }
 
+    // Find previous question
+    private fun getPreviousIndex(index: Int, previousAnswer: String): Int {
+        return when (index) {
+            1 -> 0
+            2 -> 1
+            3 -> {
+                if (answers.size >= 2) {
+                    val prevAnswer = answers[answers.size - 2]
+                    if (prevAnswer == "No") 0 else 1
+                } else 0
+            }
+            4 -> 3
+            5 -> 4
+            6 -> if (answers.size >= 2 && answers[answers.size - 2] == "Yes") 4 else 5
+            7 -> 3
+            else -> 0
+        }
+    }
+
+    // Show the emergency call screen
+    private fun showEmergencyCall(service: String) {
+        //val action = QuizFragmentDirections.actionQuizFragmentToEmergencyCallFragment(service)
+        //findNavController().navigate(action)
+    }
+
+    // Show the contact screen
+    private fun showContactsScreen() {
+        findNavController().navigate(R.id.contactsFragment)
+    }
+
+    // Show the results
     private fun showSummary() {
         val action = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(answers.toTypedArray())
         findNavController().navigate(action)
