@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.todolist.R
 
 class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -18,7 +17,7 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
 
         val backButton: Button = view.findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            val intent = Intent(requireContext(), HomeScreen::class.java)
+            val intent = Intent(requireContext(), HomeScreenFragment::class.java)
             startActivity(intent)
             requireActivity().finish()
         }

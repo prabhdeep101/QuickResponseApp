@@ -2,15 +2,12 @@ package com.example.quickresponseapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.todolist.R
 
 class QuizFragment : Fragment(R.layout.fragment_quiz) {
     private lateinit var questionText: TextView
@@ -52,7 +49,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
         val backButton: ImageButton = view.findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            val intent = Intent(requireContext(), HomeScreen::class.java)
+            val intent = Intent(requireContext(), HomeScreenFragment::class.java)
             startActivity(intent)
             requireActivity().finish()
         }
@@ -90,7 +87,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
     }
 
     private fun showEmergencyCall(service: String) {
-        val intent = Intent(requireContext(), HomeScreen::class.java)
+        val intent = Intent(requireContext(), HomeScreenFragment::class.java)
         intent.putExtra("service", service)
         startActivity(intent)
         requireActivity().finish()
