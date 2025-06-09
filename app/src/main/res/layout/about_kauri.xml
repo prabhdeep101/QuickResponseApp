@@ -1,76 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundphoto"
-    android:orientation="vertical"
     tools:context="com.example.quickresponseapp.AboutKauriFragment">
 
-    <!-- Back button -->
-    <TextView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="12dp"
-        android:text="@string/back"
-        android:textColor="#dda036"
-        android:textSize="18sp" />
-
-    <!-- Title -->
-    <TextView
-        android:id="@+id/title"
+    <!-- Scrollable content -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="@string/about_kauri"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/emergency_button"
+        android:paddingBottom="20dp">
 
-    <!-- Image of Kauri -->
-    <ImageView
-        android:id="@+id/about_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/bothwingsout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <!-- About text -->
-    <TextView
-        android:id="@+id/about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/about"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+            <!-- Back button -->
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:text="@string/back"
+                android:textColor="#dda036"
+                android:textSize="18sp" />
 
-    <!-- Spacer to push emergency button down -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/about_kauri"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <!-- Image of Kauri -->
+            <ImageView
+                android:id="@+id/about_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/bothwingsout" />
+
+            <!-- About text -->
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/about"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Emergency button -->
     <ImageButton
         android:id="@+id/emergency_button"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:layout_gravity="start"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/emergencybutton" />
 
-</LinearLayout>
+</RelativeLayout>
