@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.content.res.Resources
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         val contactsButton = view.findViewById<MaterialButton>(R.id.contacts_button)
         contactsButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreenFragment_to_contactsFragment)
+        }
+
+        val QuizButton = view.findViewById<Button>(R.id.talk_to_kauri)
+        QuizButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeScreenFragment_to_quizFragment)
         }
     }
 }

@@ -1,14 +1,11 @@
 // EmergencyCallFragment.kt
 package com.example.quickresponseapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import com.example.todolist.R
+import androidx.navigation.fragment.findNavController
 
 class EmergencyCallFragment : Fragment(R.layout.fragment_emergency_call) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -16,9 +13,8 @@ class EmergencyCallFragment : Fragment(R.layout.fragment_emergency_call) {
 
         val endButton: ImageButton = view.findViewById(R.id.endButton)
         endButton.setOnClickListener {
-            val intent = Intent(requireContext(), HomeScreen::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            // Navigate back to HomeScreen
+            findNavController().navigate(R.id.homeScreenFragment)
         }
     }
 }

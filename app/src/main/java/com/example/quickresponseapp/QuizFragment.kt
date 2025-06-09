@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.todolist.R
+import androidx.navigation.fragment.findNavController
 
 class QuizFragment : Fragment(R.layout.fragment_quiz) {
     private lateinit var questionText: TextView
@@ -52,9 +52,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
         val backButton: ImageButton = view.findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            val intent = Intent(requireContext(), HomeScreen::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            findNavController().navigate(R.id.homeScreenFragment)
         }
     }
 
@@ -90,16 +88,11 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
     }
 
     private fun showEmergencyCall(service: String) {
-        val intent = Intent(requireContext(), HomeScreen::class.java)
-        intent.putExtra("service", service)
-        startActivity(intent)
-        requireActivity().finish()
+        // Add emergency call screen
     }
 
     private fun showSummary() {
-        val intent = Intent(requireContext(), QuizResultFargment::class.java)
-        intent.putStringArrayListExtra("answers", ArrayList(answers))
-        startActivity(intent)
-        requireActivity().finish()
+        val action = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(answers.toTypedArray())
+        findNavController().navigate(action)
     }
 }
