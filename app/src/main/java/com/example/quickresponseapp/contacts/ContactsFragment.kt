@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,10 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
 
         viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
             contactsAdapter.submitList(contacts)
+        }
+
+        view.findViewById<TextView>(R.id.back_button).setOnClickListener {
+            findNavController().navigateUp()
         }
 
         // Add contact button

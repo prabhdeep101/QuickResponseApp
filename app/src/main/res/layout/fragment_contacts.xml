@@ -7,11 +7,29 @@
     android:background="@drawable/backgroundphoto"
     tools:context="com.example.quickresponseapp.contacts.ContactsFragment">
 
+    <!-- Back Button -->
+    <TextView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        android:elevation="8dp"
+        android:text="@string/back"
+        android:textColor="#dda036"
+        android:textSize="18sp"
+        android:drawablePadding="8dp" />
+
     <!-- RecyclerView for list of contacts -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_contacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="50dp"
         android:paddingBottom="100dp"
         android:clipToPadding="false"/>
 
