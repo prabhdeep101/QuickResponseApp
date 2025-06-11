@@ -26,10 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name="com.example.quickresponseapp.DisclaimerActivity" />
-        <activity android:name="com.example.quickresponseapp.QuizActivity" />
-        <activity android:name="com.example.quickresponseapp.EmergencyCallActivity" />
-        <activity android:name="com.example.quickresponseapp.QuizResultActivity" />
     </application>
 
 

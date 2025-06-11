@@ -46,6 +46,4 @@
         app:itemTextColor="@android:color/white"
         app:itemVerticalPadding="18dp" />
 
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

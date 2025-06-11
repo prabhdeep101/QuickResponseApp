@@ -33,6 +33,9 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
 
         viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
             contactsAdapter.submitList(contacts)
+
+            val emptyPlaceholder = view.findViewById<TextView>(R.id.empty_placeholder)
+            emptyPlaceholder.visibility = if (contacts.isEmpty()) View.VISIBLE else View.GONE
         }
 
         view.findViewById<TextView>(R.id.back_button).setOnClickListener {

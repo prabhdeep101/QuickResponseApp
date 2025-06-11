@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundphoto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Form Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <!-- Profile Image with Upload Button -->
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/kaurihead"
+                android:contentDescription="Profile Bird"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/bg_profile_border"
+                android:padding="6dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap image to upload photo"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"/>
+
+
+            <!-- Section Title -->
+            <TextView
+                android:text="REGISTRATION / RĒHITA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:textColor="@android:color/black" />
+
+            <!-- Inputs -->
+            <EditText
+                android:id="@+id/nameInput"
+                android:hint="NAME / INGOA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:textColor="#000000"
+                android:textColorHint="#C4C5C5"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/birthdayInput"
+                android:hint="BIRTHDAY / RĀ WHĀNAU"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:textColor="#000000"
+                android:textColorHint="#C4C5C5"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/addressInput"
+                android:hint="CURRENT ADDRESS / WĀHI NOHO O NĀIANEI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:textColor="#000000"
+                android:textColorHint="#C4C5C5"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:text="GUARDIAN / KAITIAKI"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:layout_marginTop="16dp"
+                android:textColorHint="#C4C5C5"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/guardianName"
+                android:hint="NAME / INGOA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:textColor="#000000"
+                android:textColorHint="#C4C5C5"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/guardianPhone"
+                android:hint="PHONE NUMBER / NAMA WAEA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:textColor="#000000"
+                android:textColorHint="#C4C5C5"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp"
+                android:inputType="phone" />
+
+            <CheckBox
+                android:id="@+id/orangaCheck"
+                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black" />
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/saveButton"
+                android:text="SAVE"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#FBB03B"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

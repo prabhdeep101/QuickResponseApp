@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundphoto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMERGENCY CALL"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@color/DarkBlue"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Row 1: Who do you want to call? -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Who do you want to call?\nKo wai tō hiahia ki te waea atu?"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/kaurisitting"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <ImageButton
+                android:id="@+id/callPoliceBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/police"
+                android:backgroundTint="@color/mustard"
+                android:contentDescription="Call Police" />
+
+            <ImageButton
+                android:id="@+id/callAmbulanceBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ambulance"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/mustard"
+                android:contentDescription="Call Ambulance" />
+
+            <ImageButton
+                android:id="@+id/callGuardianBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:drawablePadding="8dp"
+                android:padding="12dp"
+                android:background="@null"
+                android:contentDescription="Call Guardian"
+                android:scaleType="centerCrop"/>
+
+        </LinearLayout>
+
+        <!-- Row 2: Message section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you want me to talk to someone for you?\nKei te hiahia koe kia kōrero au ki tētahi mōu?"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="24dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/kaurileftwing"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/msgPoliceBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KAURI TALKS TO\nPOLICE PIRIHIMANA"
+                android:backgroundTint="@color/mustard"
+                android:textColor="@android:color/white"
+                android:padding="12dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/msgAmbulanceBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KAURI TALKS TO\nAMBULANCE WAKA TŪPAPAKU"
+                android:backgroundTint="@color/mustard"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp"
+                android:padding="12dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/msgGuardianBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KAURI TALKS TO\nGUARDIAN KAITIAKI"
+                android:backgroundTint="@color/mustard"
+                android:textColor="@android:color/white"
+                android:drawablePadding="8dp"
+                android:padding="12dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,21 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.QuickResponseApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Disable ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
-    <!-- Primary brand color. -->
+        <!-- Brand Colors -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+
+        <!-- Status bar -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Navigation drawer -->
         <item name="navigationViewStyle">@style/NavigationViewStyle</item>
     </style>
 
-    <style name="Theme.QuickResponseApp.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.QuickResponseApp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

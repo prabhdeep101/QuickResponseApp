@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -92,6 +95,20 @@
             app:argType="string[]"
             app:nullable="false" />
     </fragment>
+    <fragment
+        android:id="@+id/disclaimerActivity"
+        android:name="com.example.quickresponseapp.DisclaimerFragment"
+        android:label="activity_disclaimer"
+        tools:layout="@layout/fragment_disclaimer" >
+        <action
+            android:id="@+id/action_disclaimerActivity_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.example.quickresponseapp.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
 
 
 </navigation>

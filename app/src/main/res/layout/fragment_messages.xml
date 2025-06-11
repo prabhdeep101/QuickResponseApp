@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/backgroundphoto"
-    tools:context="com.example.quickresponseapp.contacts.ContactsFragment">
+    android:padding="12dp"
+    tools:context="com.example.quickresponseapp.messages.MessagesFragment">
 
     <!-- Back Button -->
     <TextView
@@ -24,7 +24,6 @@
         android:textSize="18sp"
         android:drawablePadding="8dp" />
 
-    <!-- Container for RecyclerView and placeholder -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,9 +32,9 @@
         android:paddingBottom="100dp"
         android:clipToPadding="false">
 
-        <!-- RecyclerView for list of contacts -->
+        <!-- RecyclerView for messages list -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_contacts"
+            android:id="@+id/recycler_view_messages"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -50,29 +49,21 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:visibility="gone" />
+
     </FrameLayout>
 
-    <!-- Floating button for add contact -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_contact"
-        android:layout_width="wrap_content"
+    <!-- "MESSAGE ALL" Button -->
+    <Button
+        android:id="@+id/message_all_button"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        android:backgroundTint="@color/DarkBlue"
-        app:srcCompat="@drawable/ic_add_white"
-        app:tint="@android:color/white" />
+        android:text="MESSAGE ALL"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#FBB03B"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp" />
 
-    <!-- Emergency call button -->
-    <ImageButton
-        android:id="@+id/emergency_button"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_gravity="bottom|start"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/emergencybutton" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

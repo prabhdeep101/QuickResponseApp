@@ -31,5 +31,8 @@
     <string name="accept">WHAKAAE</string>
     <string name="disclaimer">He tauira tēnei taupānga i hangaia mō ngā kaupapa mātauranga hei wāhanga o tētahi kaupapa ākonga i raro i te mahi ngātahi me AWAI. Ehara tēnei taupānga i te ratonga ohotata mana, ā, ehara hoki i te whakakapi i te āwhina ngaio, i te tohutohu ā-ture rānei.\n\nKo ngā ingoa whakapā, kōtaha, me ngā raraunga kei tēnei taupānga he tauira noa iho mō te whakaaturanga. Ehara tēnei taupānga i te taupānga ora, ā, kāore anō kia oti katoa.\n\nMā ngā urupare i kohia mai i tēnei tauira ka ārahi i ngā whanaketanga ā muri ake nei.</string>
     <string name="langselect">ENGLISH</string>
+
+    <!-- Contacts -->
+    <string name="empty_contacts_placeholder">Pāwhiritia te pātene tāpiri hei tāpiri i tētahi hoapā</string>
 </resources>
 

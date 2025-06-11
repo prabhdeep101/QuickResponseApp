@@ -31,4 +31,8 @@
     <string name="accept">ACCEPT</string>
     <string name="disclaimer"> This app is a prototype developed for educational purposes as part of a student project in collaboration with AWAI. It is not an official emergency service, nor is it intended to replace professional help or legal guidance.\n\nAll contact names, profiles, and data used in this app are simulated for demonstration purposes only. This app is not live or fully functional.\n\nFeedback gathered from this prototype will help guide future development.</string>
     <string name="langselect">TE REO MAORI</string>
+
+    <!-- Contacts -->
+    <string name="empty_contacts_placeholder">Click the plus to add a contact</string>
+
 </resources>

@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
+        if (intent.getBooleanExtra("show_disclaimer", false)) {
+            navController.navigate(R.id.disclaimerActivity)
+        }
+
         drawerLayout = findViewById(R.id.drawer_layout)
 
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
@@ -55,6 +59,13 @@ class MainActivity : AppCompatActivity() {
         val menuButton = bannerView.findViewById<ImageButton>(R.id.menu_button)
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.END)
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bannerView.visibility = when (destination.id) {
+                R.id.disclaimerActivity, R.id.disclaimerActivity -> View.GONE
+                else -> View.VISIBLE
+            }
         }
     }
 }
