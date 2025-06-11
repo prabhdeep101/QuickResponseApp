@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.quickresponseapp.contacts.ContactsViewModel
+import com.example.quickresponseapp.profile.ProfileDatabase
+import com.example.quickresponseapp.profile.UserProfile
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -70,13 +72,14 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
         dynamicMessage.text = messageToShow
 
         lifecycleScope.launch {
+            // Child name variable
+            val profileDao = ProfileDatabase.getDatabase(requireContext()).profileDao()
+            val userProfile: UserProfile? = profileDao.getProfile()
+            val childName = userProfile?.name ?: "the child"
             contactsViewModel.contacts.observe(viewLifecycleOwner) { contacts ->
-
                 // set all contacts to send text to
                 val allContacts = contacts
 
-                // Create child name variable, add logic here
-                val childName = "Child Name Here"
                 val messageBody = when {
                     // User is not ready to talk but we want adults to be aware that they may seek help soon
                     numYes == 0 -> """

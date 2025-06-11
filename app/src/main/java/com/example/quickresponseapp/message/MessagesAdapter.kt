@@ -16,6 +16,7 @@ import com.example.quickresponseapp.contacts.Contact
 
 class MessagesAdapter(
     private val context: Context,
+    private val childName: String,
     private val onMessageClick: (Contact) -> Unit
 ) : ListAdapter<Contact, MessagesAdapter.ContactViewHolder>(DiffCallback()) {
 
@@ -52,7 +53,7 @@ class MessagesAdapter(
         holder.msgButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("sms:${contact.phone}")
-                putExtra("sms_body", "This is an emergency. Please help me!")
+                putExtra("sms_body", "Kia Ora, this is Kauri! $childName wants to talk to you!")
             }
             context.startActivity(intent)
         }

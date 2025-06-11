@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_contactsFragment"
             app:destination="@id/contactsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addContactFragment"
@@ -103,12 +106,29 @@
         <action
             android:id="@+id/action_disclaimerActivity_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
+        <action
+            android:id="@+id/action_disclaimerActivity_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.example.quickresponseapp.messages.MessagesFragment"
         android:label="fragment_messages"
         tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.quickresponseapp.profile.EditProfileFragment"
+        android:label="fragment_editprofile"
+        tools:layout="@layout/fragment_editprofile" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.quickresponseapp.profile.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
 
 
 </navigation>

@@ -38,7 +38,7 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
 
             // Back button click
             backButton.setOnClickListener {
-                findNavController().navigateUp()
+                findNavController().navigate(R.id.contactsFragment)
             }
 
             emergencyButton.setOnClickListener {

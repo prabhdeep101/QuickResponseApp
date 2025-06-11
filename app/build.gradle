@@ -69,6 +69,9 @@ dependencies {
         exclude group: "com.intellij", module: "annotations"
     }
 
+    // For circle profile pics
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // Datastore Dependencies
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 

@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.quickresponseapp.profile.ProfileDatabase
 import kotlinx.coroutines.launch
 
 class DisclaimerFragment : Fragment(R.layout.fragment_disclaimer) {
 
     private var isEnglish = true
 
-    // Apply locale before views are created
     override fun onAttach(context: Context) {
         super.onAttach(AppPreferences.applySavedLocale(context))
     }
@@ -48,7 +48,15 @@ class DisclaimerFragment : Fragment(R.layout.fragment_disclaimer) {
         btnAccept.setOnClickListener {
             lifecycleScope.launch {
                 AppPreferences.setDisclaimerSeen(requireContext())
-                findNavController().navigate(R.id.homeScreenFragment)
+
+                val profileDao = ProfileDatabase.getDatabase(requireContext()).profileDao()
+                val existingProfile = profileDao.getProfile()
+
+                if (existingProfile == null) {
+                    findNavController().navigate(R.id.registrationFragment)
+                } else {
+                    findNavController().navigate(R.id.homeScreenFragment)
+                }
             }
         }
     }

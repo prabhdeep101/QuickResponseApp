@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -32,7 +33,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         )
         langSelect.adapter = adapter
 
-        // Load saved language from DataStore and update selection
         lifecycleScope.launch {
             savedLang = AppPreferences.getLanguage(requireContext())
             langSelect.setSelection(if (savedLang == "mi") 1 else 0)
@@ -44,7 +44,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 if (selectedLang != savedLang) {
                     lifecycleScope.launch {
                         AppPreferences.setLanguage(requireContext(), selectedLang)
-                        AppPreferences.updateLocale(requireContext(), selectedLang)
                         requireActivity().recreate()
                     }
                 }
@@ -53,8 +52,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        val editContactsButton = view.findViewById<MaterialButton>(R.id.edit_contact_btn)
-        editContactsButton.setOnClickListener {
+        view.findViewById<Button>(R.id.edit_profile_btn).setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_editProfileFragment)
+        }
+
+        view.findViewById<MaterialButton>(R.id.edit_contact_btn).setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_contactsFragment)
         }
 

@@ -2,7 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundphoto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgroundphoto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.quickresponseapp.profile.EditProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,17 +13,46 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Profile Image -->
-        <ImageView
-            android:id="@+id/editProfileImage"
+        <!-- Back Button -->
+        <TextView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:elevation="8dp"
+            android:text="@string/back"
+            android:textColor="#dda036"
+            android:textSize="18sp"
+            android:drawablePadding="8dp" />
+
+        <!-- Profile Image with Upload Button -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/edit_profile_Image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="16dp"
             android:src="@drawable/kaurihead"
-            android:contentDescription="Profile Image"
-            android:background="@drawable/bg_profile_border"
-            android:padding="4dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="6dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@android:color/black"
+            android:contentDescription="Profile Bird" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap image to upload photo"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"/>
 
         <!-- Section Title -->
         <TextView
@@ -34,7 +66,7 @@
         <!-- Name -->
         <EditText
             android:id="@+id/editName"
-            android:hint="NAME / INGOA"
+            android:hint="NAME"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -43,7 +75,7 @@
         <!-- Address -->
         <EditText
             android:id="@+id/editAddress"
-            android:hint="CURRENT ADDRESS / WĀHI NOHO O NĀIANEI"
+            android:hint="CURRENT ADDRESS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
@@ -51,7 +83,7 @@
 
         <!-- Guardian Section -->
         <TextView
-            android:text="GUARDIAN / KAITIAKI"
+            android:text="CURRENT CAREGIVER"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
@@ -60,7 +92,7 @@
 
         <EditText
             android:id="@+id/editGuardianName"
-            android:hint="NAME / INGOA"
+            android:hint="NAME"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -68,7 +100,7 @@
 
         <EditText
             android:id="@+id/editGuardianPhone"
-            android:hint="PHONE NUMBER / NAMA WAEA"
+            android:hint="PHONE NUMBER"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundphoto">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgroundphoto"
+    tools:context="com.example.quickresponseapp.profile.RegistrationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,17 +22,20 @@
             android:gravity="center_horizontal">
 
             <!-- Profile Image with Upload Button -->
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:src="@drawable/kaurihead"
-                android:contentDescription="Profile Bird"
                 android:layout_gravity="center"
+                android:layout_marginTop="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="@drawable/bg_profile_border"
-                android:padding="6dp" />
+                android:padding="6dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@android:color/black"
+                android:contentDescription="Profile Bird" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +48,7 @@
 
             <!-- Section Title -->
             <TextView
-                android:text="REGISTRATION / RĒHITA"
+                android:text="REGISTRATION"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -54,7 +59,7 @@
             <!-- Inputs -->
             <EditText
                 android:id="@+id/nameInput"
-                android:hint="NAME / INGOA"
+                android:hint="NAME"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -65,18 +70,20 @@
 
             <EditText
                 android:id="@+id/birthdayInput"
-                android:hint="BIRTHDAY / RĀ WHĀNAU"
+                android:hint="BIRTHDAY (DD/MM/YYYY)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
                 android:textColor="#000000"
                 android:textColorHint="#C4C5C5"
                 android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:clickable="true" />
 
             <EditText
                 android:id="@+id/addressInput"
-                android:hint="CURRENT ADDRESS / WĀHI NOHO O NĀIANEI"
+                android:hint="CURRENT ADDRESS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -86,7 +93,7 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:text="GUARDIAN / KAITIAKI"
+                android:text="CURRENT CAREGIVER"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +104,7 @@
 
             <EditText
                 android:id="@+id/guardianName"
-                android:hint="NAME / INGOA"
+                android:hint="NAME"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -108,7 +115,7 @@
 
             <EditText
                 android:id="@+id/guardianPhone"
-                android:hint="PHONE NUMBER / NAMA WAEA"
+                android:hint="PHONE NUMBER"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"

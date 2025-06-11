@@ -52,6 +52,19 @@
 
     </FrameLayout>
 
+    <!-- Emergency call button -->
+    <ImageButton
+        android:id="@+id/emergency_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/emergencybutton" />
+
     <!-- "MESSAGE ALL" Button -->
     <Button
         android:id="@+id/message_all_button"

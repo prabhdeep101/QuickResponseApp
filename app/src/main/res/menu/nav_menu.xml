@@ -4,17 +4,17 @@
         android:id="@+id/homeScreenFragment"
         android:title="Home"/>
 
-    <!--<item
-        android:id="@+id/editProfile"
-        android:title="@string/Pop_out_edit_profile"/>-->
+    <item
+        android:id="@+id/editProfileFragment"
+        android:title="@string/Pop_out_edit_profile"/>
 
     <item
         android:id="@+id/contactsFragment"
         android:title="@string/contacts" />
 
-    <!--<item
-        android:id="@+id/nav_messages"
-        android:title="@string/messages" />-->
+    <item
+        android:id="@+id/messagesFragment"
+        android:title="@string/messages" />
 
     <item
         android:id="@+id/settingsFragment"

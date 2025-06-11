@@ -10,11 +10,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickresponseapp.R
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MessagesFragment : Fragment() {
@@ -33,31 +35,39 @@ class MessagesFragment : Fragment() {
         val messageAllButton = view.findViewById<Button>(R.id.message_all_button)
         val backButton = view.findViewById<TextView>(R.id.back_button)
 
-        messagesAdapter = MessagesAdapter(
-            requireContext(),
-            onMessageClick = { contact ->
+        // Load profile data
+        lifecycleScope.launch {
+            val profileDao = com.example.quickresponseapp.profile.ProfileDatabase
+                .getDatabase(requireContext())
+                .profileDao()
+
+            val profile = profileDao.getProfile()
+            val childName = profile?.name ?: "your child"
+
+            // Initialize adapter with loaded name
+            messagesAdapter = MessagesAdapter(requireContext(), childName) { contact ->
                 val intent = Intent(Intent.ACTION_VIEW).apply {
                     data = Uri.parse("sms:${contact.phone}")
-                    putExtra("sms_body", "Kia Ora, this is Kauri! -Child- wants to talk to you!")
+                    putExtra("sms_body", "Kia Ora, this is Kauri! $childName wants to talk to you!")
                 }
                 startActivity(intent)
             }
-        )
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = messagesAdapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = messagesAdapter
 
-        viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
-            val sorted = contacts.sortedByDescending { it.isDefault }
-            messagesAdapter.submitList(sorted)
+            viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
+                val sorted = contacts.sortedByDescending { it.isDefault }
+                messagesAdapter.submitList(sorted)
 
-            messageAllButton.setOnClickListener {
-                for (contact in sorted) {
-                    val intent = Intent(Intent.ACTION_VIEW).apply {
-                        data = Uri.parse("sms:${contact.phone}")
-                        putExtra("sms_body", "Kia Ora, this is Kauri! -Child- wants to talk to you!")
+                messageAllButton.setOnClickListener {
+                    for (contact in sorted) {
+                        val intent = Intent(Intent.ACTION_VIEW).apply {
+                            data = Uri.parse("sms:${contact.phone}")
+                            putExtra("sms_body", "Kia Ora, this is Kauri! $childName wants to talk to you!")
+                        }
+                        startActivity(intent)
                     }
-                    startActivity(intent)
                 }
             }
         }

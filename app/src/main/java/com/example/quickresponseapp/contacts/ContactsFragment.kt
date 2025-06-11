@@ -39,7 +39,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
         }
 
         view.findViewById<TextView>(R.id.back_button).setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.homeScreenFragment)
         }
 
         // Add contact button
