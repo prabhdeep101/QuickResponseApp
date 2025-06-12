@@ -70,6 +70,17 @@
     <string name="dynamic_message_placeholder">Karere whakarerekē kei konei</string>
     <string name="yes_button">ĀE</string>
     <string name="no_button">KĀO</string>
+    <string name="question_are_you_safe">Kei te haumaru koe?</string>
+    <string name="question_are_you_hurt">Kua whara koe?</string>
+    <string name="question_do_you_feel_scared">Kei te mataku koe?</string>
+    <string name="question_want_to_talk">Kei te hiahia koe ki te kōrero ki tētahi?</string>
+    <string name="question_talk_to_police">Kei te hiahia koe ki te kōrero ki ngā Pirihimana?</string>
+    <string name="question_talk_to_ambulance">Kei te hiahia koe ki te kōrero ki te Tereina Tūāwhina?</string>
+    <string name="question_me_call_police">Kei te hiahia koe kia waea au ki ngā Pirihimana?</string>
+    <string name="question_me_call_ambulance">Kei te hiahia koe kia waea au ki te Tereina Tūāwhina?</string>
+    <string name="question_talk_to_someone_else">Kei te hiahia koe ki te kōrero ki tētahi atu?</string>
+    <string name="result_message_support">Kua rangona tō reo, ā, kua whakamōhiotia ngā tāngata me mōhio!</string>
+    <string name="result_message_default">E mōhio ana mātou kei te mataku pea koe, nō reira kua whakamōhiotia \u014D hoap\u0101 mō āu kare ā-roto!</string>
 
     <!-- Emergency Page -->
     <string name="who_do_you_want_to_call">Ko wai tō hiahia ki te waea atu?</string>
@@ -80,5 +91,6 @@
     <string name="kauri_talks_to_police">KAURI E KŌRERO ANA KI NGĀ PIRIHIMANA</string>
     <string name="kauri_talks_ambulance">KAURI E KŌRERO ANA KI TE WAKA TŪPONO</string>
     <string name="kauri_talks_to_guardian">KAURI E KŌRERO ANA KI TE TANGATA WHAKAPĀ</string>
+    <string name="title_home">Kāinga</string>
 </resources>
 

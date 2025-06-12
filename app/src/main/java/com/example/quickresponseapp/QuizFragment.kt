@@ -24,17 +24,19 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
         val imageResId: Int
     )
 
-    private val questions = listOf(
-        Question("Are you safe?", R.drawable.kaurileftwing),
-        Question("Are you hurt?", R.drawable.bothwingsout),
-        Question("Do you feel scared?", R.drawable.kaurileftwing),
-        Question("Do you want to talk to someone?", R.drawable.kaurirightwing),
-        Question("Do you want to talk to the Police?", R.drawable.bothwingsout),
-        Question("Do you want to talk to the Ambulance?", R.drawable.kaurirightwing),
-        Question("Do you want me to call the Police?", R.drawable.kaurileftwing),
-        Question("Do you want me to call the Ambulance?", R.drawable.bothwingsout),
-        Question("Do you want to talk to someone else?", R.drawable.kaurirightwing)
-    )
+    private val questions by lazy {
+        listOf(
+            Question(requireContext().getString(R.string.question_are_you_safe), R.drawable.kaurileftwing),
+            Question(requireContext().getString(R.string.question_are_you_hurt), R.drawable.bothwingsout),
+            Question(requireContext().getString(R.string.question_do_you_feel_scared), R.drawable.kaurileftwing),
+            Question(requireContext().getString(R.string.question_want_to_talk), R.drawable.kaurirightwing),
+            Question(requireContext().getString(R.string.question_talk_to_police), R.drawable.bothwingsout),
+            Question(requireContext().getString(R.string.question_talk_to_ambulance), R.drawable.kaurirightwing),
+            Question(requireContext().getString(R.string.question_me_call_police), R.drawable.kaurileftwing),
+            Question(requireContext().getString(R.string.question_me_call_ambulance), R.drawable.bothwingsout),
+            Question(requireContext().getString(R.string.question_talk_to_someone_else), R.drawable.kaurirightwing)
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,7 +74,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
         // Emergency button
         val emergencyButton: ImageButton = view.findViewById(R.id.emergency_button)
         emergencyButton.setOnClickListener {
-            //findNavController().navigate(R.id.emergencyCallFragment) // when you add this
+            findNavController().navigate(R.id.emergencyPageFragment)
         }
     }
 
@@ -150,8 +152,8 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
     // Show the emergency call screen
     private fun showEmergencyCall(service: String) {
-        //val action = QuizFragmentDirections.actionQuizFragmentToEmergencyCallFragment(service)
-        //findNavController().navigate(action)
+        val action = QuizFragmentDirections.actionQuizFragmentToEmergencyPageFragment()
+        findNavController().navigate(action)
     }
 
     // Show the contact screen

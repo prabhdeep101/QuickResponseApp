@@ -70,6 +70,17 @@
     <string name="dynamic_message_placeholder">Dynamic message here</string>
     <string name="yes_button">YES</string>
     <string name="no_button">NO</string>
+    <string name="question_are_you_safe">Are you safe?</string>
+    <string name="question_are_you_hurt">Are you hurt?</string>
+    <string name="question_do_you_feel_scared">Do you feel scared?</string>
+    <string name="question_want_to_talk">Do you want to talk to someone?</string>
+    <string name="question_talk_to_police">Do you want to talk to the Police?</string>
+    <string name="question_talk_to_ambulance">Do you want to talk to the Ambulance?</string>
+    <string name="question_me_call_police">Do you want me to call the Police?</string>
+    <string name="question_me_call_ambulance">Do you want me to call the Ambulance?</string>
+    <string name="question_talk_to_someone_else">Do you want to talk to someone else?</string>
+    <string name="result_message_support">I heard you and I\'ve told the people who need to know!</string>
+    <string name="result_message_default">We know you might be scared right now, so I\'ve let your contacts know how you feel!</string>
 
     <!-- Emergency Page -->
     <string name="who_do_you_want_to_call">Who do you want to call?</string>
@@ -80,4 +91,5 @@
     <string name="kauri_talks_to_police">KAURI TALKS TO POLICE</string>
     <string name="kauri_talks_ambulance">KAURI TALKS AMBULANCE</string>
     <string name="kauri_talks_to_guardian">KAURI TALKS TO CONTACT</string>
+    <string name="title_home">Home</string>
 </resources>

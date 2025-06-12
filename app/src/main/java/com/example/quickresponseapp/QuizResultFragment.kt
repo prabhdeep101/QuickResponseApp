@@ -22,9 +22,9 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
 
     // Arguments from Nav graph
     private val args: QuizResultFragmentArgs by navArgs()
-    // Call the contacts viewModel to access contacts data
+    // Contacts viewModel to access contacts details
     private val contactsViewModel: ContactsViewModel by viewModels()
-    // List of questions for Text message
+    // List of questions for Text message results
     private val questions = listOf(
         "Are you safe?",
         "Are you hurt?",
@@ -39,11 +39,9 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Create variables for finding the answers text and dynamic message
         val answersText: TextView = view.findViewById(R.id.answersText)
         val dynamicMessage: TextView = view.findViewById(R.id.dynamicMessage)
-
         // Set value for answers using args
         val answers = args.answers.toList()
 
@@ -63,18 +61,20 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
 
         // Decide message for result screen
         val messageToShow = when {
-            // If Q3 or Q4 were yes, show support message
             (answers.size >= 4 && (answers[2] == "Yes" || answers[3] == "Yes")) ->
-                "I heard you and I've told the people who need to know!"
+                getString(R.string.result_message_support)
             else ->
-                "We know you might be scared right now, so I've let your contacts know how you feel!"
+                getString(R.string.result_message_default)
         }
+        // display dynamic message
         dynamicMessage.text = messageToShow
 
         lifecycleScope.launch {
-            // Child name variable
+            // Access the profile Dao
             val profileDao = ProfileDatabase.getDatabase(requireContext()).profileDao()
+            // userProfile variable
             val userProfile: UserProfile? = profileDao.getProfile()
+            // Child name variable
             val childName = userProfile?.name ?: "the child"
             contactsViewModel.contacts.observe(viewLifecycleOwner) { contacts ->
                 // set all contacts to send text to
@@ -112,7 +112,7 @@ class QuizResultFragment : Fragment(R.layout.fragment_quiz_result) {
         // Emergency button
         val emergencyButton: ImageButton = view.findViewById(R.id.emergency_button)
         emergencyButton.setOnClickListener {
-            //findNavController().navigate(R.id.emergencyCallFragment)
+            findNavController().navigate(R.id.emergencyPageFragment)
         }
     }
 }
