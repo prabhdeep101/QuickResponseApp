@@ -1,5 +1,7 @@
 package com.example.quickresponseapp.contacts
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 
@@ -17,6 +20,7 @@ class AddEditContactViewModel @Inject constructor(
 ) : ViewModel() {
 
     val contact = state.get<Contact>("contact")
+    var contactImageUri: String? = null
 
     var contactName = state.get<String>("contactName") ?: contact?.name ?: ""
         set(value) {
@@ -78,6 +82,7 @@ class AddEditContactViewModel @Inject constructor(
                 phone = contactPhone,
                 address = contactAddress,
                 relation = contactRelation,
+                photoUri = contactImageUri,
                 isOrangaTamarikiApproved = isOrangaTamarikiApproved,
                 isDefault = isDefault
             )
@@ -88,10 +93,28 @@ class AddEditContactViewModel @Inject constructor(
                 phone = contactPhone,
                 address = contactAddress,
                 relation = contactRelation,
+                photoUri = contactImageUri,
                 isOrangaTamarikiApproved = isOrangaTamarikiApproved,
                 isDefault = isDefault
             )
             createContact(newContact)
+        }
+    }
+
+    fun saveImageToInternalStorage(context: Context, uri: Uri): String? {
+        return try {
+            val inputStream = context.contentResolver.openInputStream(uri)
+            val fileName = "contact_${System.currentTimeMillis()}.jpg"
+            val file = File(context.filesDir, fileName)
+            inputStream?.use { input ->
+                file.outputStream().use { output ->
+                    input.copyTo(output)
+                }
+            }
+            file.absolutePath
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
         }
     }
 

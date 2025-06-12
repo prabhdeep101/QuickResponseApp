@@ -1,21 +1,27 @@
 package com.example.quickresponseapp
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import collectWhileCreated
+import com.example.quickresponseapp.profile.ProfileViewModel
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
 
@@ -53,6 +59,30 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        val headerView = navigationView.getHeaderView(0)
+        val profileImageView = headerView.findViewById<CircleImageView>(R.id.profileImage)
+        val profileNameView = headerView.findViewById<TextView>(R.id.profileName)
+
+        profileViewModel.getProfile { profile ->
+            profile?.let {
+                profileNameView.text = "Kia Ora, ${it.name}!"
+
+                if (!it.profileImagePath.isNullOrEmpty() && it.profileImagePath != "default") {
+                    try {
+                        val uri = Uri.parse(it.profileImagePath)
+                        profileImageView.setImageURI(uri)
+                        if (profileImageView.drawable == null) {
+                            profileImageView.setImageResource(R.drawable.kaurihead)
+                        }
+                    } catch (e: Exception) {
+                        profileImageView.setImageResource(R.drawable.kaurihead)
+                    }
+                } else {
+                    profileImageView.setImageResource(R.drawable.kaurihead)
+                }
+            }
+        }
+
         val bannerView = findViewById<View>(R.id.global_banner)
         val menuButton = bannerView.findViewById<ImageButton>(R.id.menu_button)
         menuButton.setOnClickListener {
@@ -62,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             bannerView.visibility = when (destination.id) {
                 R.id.disclaimerActivity -> View.GONE
+                R.id.registrationFragment -> View.GONE
                 else -> View.VISIBLE
             }
         }

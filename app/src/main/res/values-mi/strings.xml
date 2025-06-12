@@ -34,5 +34,51 @@
 
     <!-- Contacts -->
     <string name="empty_contacts_placeholder">Pāwhiritia te pātene tāpiri hei tāpiri i tētahi hoapā</string>
+    <string name="default_contact_star">★ TAUNAKITIA</string>
+    <string name="edit_contact">WHAKAHOU WHAKAPĀ</string>
+    <string name="hint_phone_number">NAMA WAEA</string>
+    <string name="hint_relationship">HONONGA</string>
+    <string name="text_oranga_tamariki">NĀ ORANGA TAMARIKI TĒNEI TANGATA I TOHUA?</string>
+    <string name="text_set_default_contact">TAUTOHU HE WHAKAPĀ TAUNAKITIA?</string>
+    <string name="text_delete">MUKU</string>
+    <string name="text_address">WĀHI NOHO</string>
+    <string name="text_oranga_certified">HE WHAKAMANA TĒNEI NĀ ORANGA TAMARIKI</string>
+    <string name="text_default_contact">KO TĒNEI TE WHAKAPĀ TAUNAKITIA</string>
+    <string name="text_edit">WHAKAHOU</string>
+    <string name="add_contact">TĀPIRI WHAKAPĀ</string>
+
+    <!-- Messages -->
+    <string name="empty_messages_placeholder">Tāpiritia he hoapā kia taea ai te tuku karere!</string>
+    <string name="message_all">KARERE KATOA</string>
+
+    <!-- Profile/Contact -->
+    <string name="tap_to_upload_photo">Pāwhiri ki te tuku whakaahua</string>
+    <string name="registration_title">RĒHITA</string>
+    <string name="hint_name">INGOA</string>
+    <string name="hint_birthday">RĀ WHĀNAU (DD/MM/YYYY)</string>
+    <string name="hint_address">WĀHI NOHO O NĀIANEI</string>
+    <string name="label_guardian">KAITIAKI O NĀIANEI</string>
+    <string name="hint_guardian_name">INGOA</string>
+    <string name="hint_guardian_phone">NAMA WAEA</string>
+    <string name="label_oranga_check">HEI TŪTOHU NĀ ORANGA TAMARIKI TĒNEI TANGATA?</string>
+    <string name="button_save">PENAPENA</string>
+
+    <!-- Quiz -->
+    <string name="ka_pai_brave">Ka pai! He toa koe!</string>
+    <string name="results_title">Ānei ō hua</string>
+    <string name="results_placeholder">Ngā hua kei konei...</string>
+    <string name="dynamic_message_placeholder">Karere whakarerekē kei konei</string>
+    <string name="yes_button">ĀE</string>
+    <string name="no_button">KĀO</string>
+
+    <!-- Emergency Page -->
+    <string name="who_do_you_want_to_call">Ko wai tō hiahia ki te waea atu?</string>
+    <string name="police">NGĀ PIRIHIMANA</string>
+    <string name="ambulance">WAKA TŪPONO</string>
+    <string name="talk_to_contact">KŌRERO KI TE TANGATA WHAKAPĀ</string>
+    <string name="talk_to_someone_for_you">Kei te hiahia koe kia kōrero au ki tētahi mōu?</string>
+    <string name="kauri_talks_to_police">KAURI E KŌRERO ANA KI NGĀ PIRIHIMANA</string>
+    <string name="kauri_talks_ambulance">KAURI E KŌRERO ANA KI TE WAKA TŪPONO</string>
+    <string name="kauri_talks_to_guardian">KAURI E KŌRERO ANA KI TE TANGATA WHAKAPĀ</string>
 </resources>
 

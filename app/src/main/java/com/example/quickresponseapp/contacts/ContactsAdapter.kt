@@ -53,11 +53,18 @@ class ContactsAdapter(
             relationshipText.text = contact.relation
             defaultLabel.visibility = if (contact.isDefault) View.VISIBLE else View.GONE
 
-            if (contact.profileImageUri != null) {
-                // Set custom profile picture
-                profileImage.setImageURI(Uri.parse(contact.profileImageUri))
+            val uri = contact.photoUri
+            if (!uri.isNullOrEmpty()) {
+                try {
+                    profileImage.setImageURI(Uri.parse(uri))
+                    // Check if it successfully loaded anything
+                    if (profileImage.drawable == null) {
+                        profileImage.setImageResource(R.drawable.kaurihead)
+                    }
+                } catch (e: Exception) {
+                    profileImage.setImageResource(R.drawable.kaurihead)
+                }
             } else {
-                // Set default profile picture
                 profileImage.setImageResource(R.drawable.kaurihead)
             }
         }
@@ -87,5 +94,4 @@ class ContactsAdapter(
         override fun areContentsTheSame(oldItem: Contact, newItem: Contact) =
             oldItem == newItem
     }
-
 }

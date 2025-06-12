@@ -46,5 +46,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home) {
         messagesButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreenFragment_to_messagesFragment)
         }
+
+        val EmergencyButton = view.findViewById<ImageButton>(R.id.emergency_button)
+        EmergencyButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeScreenFragment_to_emergencyPageFragment)
+        }
     }
 }

@@ -34,6 +34,7 @@ class MessagesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_messages)
         val messageAllButton = view.findViewById<Button>(R.id.message_all_button)
         val backButton = view.findViewById<TextView>(R.id.back_button)
+        val emptyPlaceholder = view.findViewById<TextView>(R.id.empty_placeholder)
 
         // Load profile data
         lifecycleScope.launch {
@@ -59,6 +60,8 @@ class MessagesFragment : Fragment() {
             viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
                 val sorted = contacts.sortedByDescending { it.isDefault }
                 messagesAdapter.submitList(sorted)
+
+                emptyPlaceholder.visibility = if (sorted.isEmpty()) View.VISIBLE else View.GONE
 
                 messageAllButton.setOnClickListener {
                     for (contact in sorted) {

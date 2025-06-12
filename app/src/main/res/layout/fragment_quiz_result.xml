@@ -31,7 +31,7 @@
                 android:id="@+id/aprct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ka Pai! You're so brave!"
+                android:text="@string/ka_pai_brave"
                 android:textColor="#000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -40,7 +40,7 @@
                 android:id="@+id/disclaimerTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here's your results"
+                android:text="@string/results_title"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -79,7 +79,7 @@
                 android:background="@color/LightGrey"
                 android:gravity="start"
                 android:padding="16dp"
-                android:text="Results here..."
+                android:text="@string/results_placeholder"
                 android:textColor="#000"
                 android:textSize="18sp" />
 

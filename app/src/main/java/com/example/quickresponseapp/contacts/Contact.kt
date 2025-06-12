@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "contacts")
+@Entity(tableName = "contact")
 data class Contact(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
@@ -15,5 +15,5 @@ data class Contact(
     val relation: String,
     val isDefault: Boolean = false,
     val isOrangaTamarikiApproved: Boolean = false,
-    val profileImageUri: String? = null
+    val photoUri: String? = null
 ) : Parcelable

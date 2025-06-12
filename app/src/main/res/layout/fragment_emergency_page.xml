@@ -2,12 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundphoto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgroundphoto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.quickresponseapp.EmergencyPageFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="80dp"> <!-- space for home button -->
+        android:paddingBottom="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,7 +19,21 @@
             android:padding="20dp"
             android:gravity="center_horizontal">
 
-            <!-- Banner: Who do you want to call? -->
+            <!-- Back Button -->
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:focusable="true"
+                android:text="@string/back"
+                android:textColor="@color/mustard"
+                android:textSize="18sp" />
+
+            <!-- Banner 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,7 +42,7 @@
                 android:layout_marginBottom="8dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
@@ -33,110 +50,110 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="50dp"
-                        android:text="Who do you want to call?"
+                        android:paddingLeft="30dp"
+                        android:text="@string/who_do_you_want_to_call"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
-
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
                     android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/kaurisitting"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
-            <!-- Row of call buttons -->
+            <!-- Call Buttons Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="12dp"
+                android:weightSum="3">
 
-                <!-- Police -->
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callPoliceBtn"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_margin="4dp"
+                    android:text="@string/police"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/mustard"
+                    android:textStyle="bold"
+                    app:icon="@drawable/police2"
+                    app:iconTint="@android:color/white"
+                    app:iconSize="90dp"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:cornerRadius="12dp"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
 
-                    <ImageButton
-                        android:id="@+id/callPoliceBtn"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/rounded_button"
-                        android:src="@drawable/police"
-                        android:scaleType="centerInside"
-                        android:contentDescription="Police" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="POLICE\nPIRIHIMANA"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-
-                <!-- Ambulance -->
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callAmbulanceBtn"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginStart="8dp">
+                    android:layout_margin="4dp"
+                    android:text="@string/ambulance"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#dda036"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ambo"
+                    app:iconTint="@android:color/white"
+                    app:iconSize="90dp"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:cornerRadius="12dp"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
 
-                    <ImageButton
-                        android:id="@+id/callAmbulanceBtn"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/rounded_button"
-                        android:src="@drawable/ambulance"
-                        android:scaleType="centerInside"
-                        android:contentDescription="Ambulance" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="AMBULANCE\nWAKA TŪPAPAKU"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
-
-                <!-- Guardian -->
                 <LinearLayout
+                    android:id="@+id/guardianButtonContainer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_margin="4dp"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:layout_marginStart="8dp">
+                    android:padding="12dp"
+                    android:backgroundTint="@color/mustard"
+                    android:background="@drawable/rounded_button"
+                    android:elevation="4dp">
 
-                    <ImageButton
-                        android:id="@+id/callGuardianBtn"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/guardianImage"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
-                        android:background="@drawable/rounded_button"
-                        android:scaleType="centerInside"
-                        android:contentDescription="Guardian" />
+                        android:src="@drawable/kaurihead"
+                        app:civ_border_width="3dp"
+                        app:civ_border_color="@color/mustard"
+                        app:civ_circle_background_color="@android:color/white"
+                        android:layout_marginBottom="4dp" />
+
                     <TextView
+                        android:id="@+id/guardianLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="GUARDIAN\nKAITIAKI"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:text="@string/talk_to_contact"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         android:textSize="12sp"
-                        android:layout_marginTop="4dp" />
+                        android:gravity="center"
+                        android:textAlignment="center" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Banner 2: Kauri talks for you -->
+            <!-- Banner 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +162,7 @@
                 android:layout_marginTop="24dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
@@ -153,16 +170,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Do you want me to talk to someone for you?"
+                        android:text="@string/talk_to_someone_for_you"
                         android:textSize="18sp"
+                        android:paddingLeft="30dp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kei te hiahia koe kia kōrero au ki tētahi mōu?"
-                        android:textSize="14sp"
                         android:textColor="@android:color/black" />
                 </LinearLayout>
 
@@ -173,62 +184,98 @@
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
-            <!-- Row of message buttons -->
+            <!-- Talk Buttons Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="12dp"
+                android:weightSum="3">
 
-                <!-- Msg Police -->
-                <Button
-                    android:id="@+id/msgPoliceBtn"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/kauricallPoliceBtn"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="KAURI TALKS TO\nPOLICE"
+                    android:layout_margin="4dp"
+                    android:text="@string/kauri_talks_to_police"
                     android:textSize="12sp"
-                    android:textAllCaps="false"
                     android:textColor="@android:color/white"
+                    android:backgroundTint="@color/mustard"
                     android:textStyle="bold"
-                    android:padding="12dp"
-                    android:background="@drawable/rounded_button"
-                    android:layout_marginEnd="4dp"/>
+                    app:icon="@drawable/police2"
+                    app:iconTint="@android:color/white"
+                    app:iconSize="90dp"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:cornerRadius="12dp"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
 
-                <!-- Msg Ambulance -->
-                <Button
-                    android:id="@+id/msgAmbulanceBtn"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/kauricallAmbulanceBtn"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="KAURI TALKS TO\nAMBULANCE"
+                    android:layout_margin="4dp"
+                    android:text="@string/kauri_talks_ambulance"
                     android:textSize="12sp"
-                    android:textAllCaps="false"
                     android:textColor="@android:color/white"
+                    android:backgroundTint="#dda036"
                     android:textStyle="bold"
-                    android:padding="12dp"
-                    android:background="@drawable/rounded_button"
-                    android:layout_marginHorizontal="4dp"/>
+                    app:icon="@drawable/ambo"
+                    app:iconTint="@android:color/white"
+                    app:iconSize="90dp"
+                    app:iconGravity="top"
+                    app:iconPadding="8dp"
+                    app:cornerRadius="12dp"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
 
-                <!-- Msg Guardian -->
-                <Button
-                    android:id="@+id/msgGuardianBtn"
+                <LinearLayout
+                    android:id="@+id/kauriguardianContainer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="KAURI TALKS TO\nGUARDIAN"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
                     android:padding="12dp"
+                    android:backgroundTint="@color/mustard"
                     android:background="@drawable/rounded_button"
-                    android:layout_marginStart="4dp"/>
+                    android:elevation="4dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/kauriguardianImage"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:src="@drawable/kaurihead"
+                        app:civ_border_width="3dp"
+                        app:civ_border_color="@color/mustard"
+                        app:civ_circle_background_color="@android:color/white"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/kauriguardianLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kauri_talks_to_guardian"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:textAlignment="center" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
-    <!-- Home button -->
+
+    <!-- Home Button -->
     <ImageButton
         android:id="@+id/home_button"
         android:layout_width="62dp"
@@ -237,6 +284,7 @@
         android:layout_marginBottom="22dp"
         android:background="@null"
         android:scaleType="fitCenter"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/home_button" />
+        android:src="@drawable/home_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

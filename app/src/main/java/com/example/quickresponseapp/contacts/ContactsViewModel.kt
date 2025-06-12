@@ -14,11 +14,16 @@ class ContactsViewModel @Inject constructor(
 ) : ViewModel() {
 
     val contacts: LiveData<List<Contact>> = contactDao.getAllContacts()
+
     fun insert(contact: Contact) = viewModelScope.launch {
         contactDao.insertContact(contact)
     }
 
     fun delete(contact: Contact) = viewModelScope.launch {
         contactDao.deleteContact(contact)
+    }
+
+    suspend fun getDefaultContact(): Contact? {
+        return contactDao.getDefaultContact()
     }
 }

@@ -1,5 +1,6 @@
 package com.example.quickresponseapp.contacts
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -18,7 +19,6 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
         super.onViewCreated(view, savedInstanceState)
 
         val contact = args.contact
-
         val binding = FragmentContactDetailsBinding.bind(view)
 
         binding.apply {
@@ -27,22 +27,35 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
             contactPhone.text = contact.phone
             contactRelation.text = contact.relation
 
+            val uri = contact.photoUri
+            if (!uri.isNullOrEmpty()) {
+                try {
+                    contactImageView.setImageURI(Uri.parse(uri))
+                    if (contactImageView.drawable == null) {
+                        contactImageView.setImageResource(R.drawable.kaurihead)
+                    }
+                } catch (e: Exception) {
+                    contactImageView.setImageResource(R.drawable.kaurihead)
+                }
+            } else {
+                contactImageView.setImageResource(R.drawable.kaurihead)
+            }
+
             textOranga.visibility = if (contact.isOrangaTamarikiApproved) View.VISIBLE else View.GONE
             textDefault.visibility = if (contact.isDefault) View.VISIBLE else View.GONE
 
-            // Edit button click
             buttonEdit.setOnClickListener {
-                val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToEditContactFragment2(contact)
+                val action = ContactDetailsFragmentDirections
+                    .actionContactDetailsFragmentToEditContactFragment2(contact)
                 findNavController().navigate(action)
             }
 
-            // Back button click
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.contactsFragment)
             }
 
             emergencyButton.setOnClickListener {
-                // Optional: navigate to Emergency or open dialer
+                // Optional: handle emergency action
             }
         }
     }

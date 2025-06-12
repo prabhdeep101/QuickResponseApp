@@ -1,23 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/DarkBlue"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/DarkBlue"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/kaurihead"
-        android:layout_marginTop="20dp" />
+        app:civ_circle_background_color="@color/white"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@color/mustard" />
 
     <TextView
+        android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kia Ora, {USER_NAME}!"
+        android:layout_marginTop="12dp"
+        android:text="Kia Ora, User!"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="12dp" />
+        android:textStyle="bold" />
 </LinearLayout>

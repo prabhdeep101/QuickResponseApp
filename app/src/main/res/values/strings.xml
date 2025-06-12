@@ -34,5 +34,50 @@
 
     <!-- Contacts -->
     <string name="empty_contacts_placeholder">Click the plus to add a contact</string>
+    <string name="default_contact_star">★ DEFAULT</string>
+    <string name="edit_contact">EDIT CONTACT</string>
+    <string name="hint_phone_number">PHONE NUMBER</string>
+    <string name="hint_relationship">RELATIONSHIP</string>
+    <string name="text_oranga_tamariki">IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?</string>
+    <string name="text_set_default_contact">SET AS DEFAULT CONTACT?</string>
+    <string name="text_delete">DELETE</string>
+    <string name="text_address">ADDRESS</string>
+    <string name="text_oranga_certified">THIS PERSON IS ORANGA TAMARIKI CERTIFIED</string>
+    <string name="text_default_contact">THIS PERSON IS THE DEFAULT CONTACT</string>
+    <string name="text_edit">EDIT</string>
+    <string name="add_contact">ADD CONTACT</string>
 
+    <!-- Messages -->
+    <string name="empty_messages_placeholder">Add contacts to message someone!</string>
+    <string name="message_all">MESSAGE ALL</string>
+
+    <!-- Profile/Contact -->
+    <string name="tap_to_upload_photo">Tap image to upload photo</string>
+    <string name="registration_title">REGISTRATION</string>
+    <string name="hint_name">NAME</string>
+    <string name="hint_birthday">BIRTHDAY (DD/MM/YYYY)</string>
+    <string name="hint_address">CURRENT ADDRESS</string>
+    <string name="label_guardian">CURRENT CAREGIVER</string>
+    <string name="hint_guardian_name">NAME</string>
+    <string name="hint_guardian_phone">PHONE NUMBER</string>
+    <string name="label_oranga_check">IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?</string>
+    <string name="button_save">SAVE</string>
+
+    <!-- Quiz -->
+    <string name="ka_pai_brave">Ka Pai! You\'re so brave!</string>
+    <string name="results_title">Here\'s your results</string>
+    <string name="results_placeholder">Results here...</string>
+    <string name="dynamic_message_placeholder">Dynamic message here</string>
+    <string name="yes_button">YES</string>
+    <string name="no_button">NO</string>
+
+    <!-- Emergency Page -->
+    <string name="who_do_you_want_to_call">Who do you want to call?</string>
+    <string name="police">POLICE</string>
+    <string name="ambulance">AMBULANCE</string>
+    <string name="talk_to_contact">TALK TO CONTACT</string>
+    <string name="talk_to_someone_for_you">Do you want me to talk to someone for you?</string>
+    <string name="kauri_talks_to_police">KAURI TALKS TO POLICE</string>
+    <string name="kauri_talks_ambulance">KAURI TALKS AMBULANCE</string>
+    <string name="kauri_talks_to_guardian">KAURI TALKS TO CONTACT</string>
 </resources>

@@ -73,7 +73,7 @@
                 android:layout_below="@id/text_title"
                 android:layout_alignStart="@id/text_title"
                 android:layout_marginTop="4dp"
-                android:text="★ DEFAULT"
+                android:text="@string/default_contact_star"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="12sp"

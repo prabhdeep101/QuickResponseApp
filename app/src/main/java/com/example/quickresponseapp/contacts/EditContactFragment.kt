@@ -1,7 +1,9 @@
 package com.example.quickresponseapp.contacts
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -16,22 +18,36 @@ import com.example.quickresponseapp.R
 import com.example.quickresponseapp.databinding.FragmentEditContactBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.launch
+import java.io.File
 
 @AndroidEntryPoint
 class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
     private val viewModel: AddEditContactViewModel by viewModels()
-
     private val args: EditContactFragmentArgs by navArgs()
+    private lateinit var contactImageView: CircleImageView
 
-
-
+    private val imagePickerLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        uri?.let {
+            val savedPath = viewModel.saveImageToInternalStorage(requireContext(), it)
+            if (savedPath != null) {
+                contactImageView.setImageURI(Uri.fromFile(File(savedPath)))
+                viewModel.contactImageUri = savedPath
+            }
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentEditContactBinding.bind(view)
         val contact = args.contact
 
+        contactImageView = binding.contactImage
+
+        // Pre-fill the contact data
         viewModel.contactName = contact.name
         viewModel.contactPhone = contact.phone
         viewModel.contactAddress = contact.address
@@ -64,6 +80,19 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
                 viewModel.onSaveClick()
             }
 
+            contactImageView.setOnClickListener {
+                imagePickerLauncher.launch("image/*")
+            }
+
+            backButton.setOnClickListener {
+                findNavController().navigate(R.id.contactsFragment)
+            }
+
+            // Set the image if it exists
+            if (!viewModel.contactImageUri.isNullOrEmpty()) {
+                contactImageView.setImageURI(Uri.parse(viewModel.contactImageUri))
+            }
+            // Delete contact button
             buttonDelete.setOnClickListener {
                 viewModel.onDeleteClick(contact)
             }

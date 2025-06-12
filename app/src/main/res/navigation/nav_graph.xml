@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_contactsFragment_to_contactDetailsFragment2"
             app:destination="@id/contactDetailsFragment" />
+        <action
+            android:id="@+id/action_contactsFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -35,6 +38,9 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_messagesFragment"
             app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -47,12 +53,19 @@
         <action
             android:id="@+id/action_settingsFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/addContactFragment"
         android:name="com.example.quickresponseapp.contacts.AddContactFragment"
         android:label="fragment_add_contact"
-        tools:layout="@layout/fragment_add_contact" />
+        tools:layout="@layout/fragment_add_contact" >
+        <action
+            android:id="@+id/action_addContactFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/contactDetailsFragment"
         android:name="com.example.quickresponseapp.contacts.ContactDetailsFragment"
@@ -64,6 +77,9 @@
         <argument
             android:name="contact"
             app:argType="com.example.quickresponseapp.contacts.Contact" />
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/editContactFragment"
@@ -73,12 +89,19 @@
         <argument
             android:name="contact"
             app:argType="com.example.quickresponseapp.contacts.Contact" />
+        <action
+            android:id="@+id/action_editContactFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutKauriFragment"
         android:name="com.example.quickresponseapp.AboutKauriFragment"
         android:label="about_kauri"
-        tools:layout="@layout/about_kauri" />
+        tools:layout="@layout/about_kauri" >
+        <action
+            android:id="@+id/action_aboutKauriFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.quickresponseapp.QuizFragment"
@@ -87,6 +110,9 @@
         <action
             android:id="@+id/action_quizFragment_to_quizResultFragment"
             app:destination="@id/quizResultFragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizResultFragment"
@@ -97,6 +123,9 @@
             android:name="answers"
             app:argType="string[]"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_quizResultFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/disclaimerActivity"
@@ -114,7 +143,11 @@
         android:id="@+id/messagesFragment"
         android:name="com.example.quickresponseapp.messages.MessagesFragment"
         android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" />
+        tools:layout="@layout/fragment_messages" >
+        <action
+            android:id="@+id/action_messagesFragment_to_emergencyPageFragment"
+            app:destination="@id/emergencyPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.quickresponseapp.profile.EditProfileFragment"
@@ -129,6 +162,11 @@
             android:id="@+id/action_registrationFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/emergencyPageFragment"
+        android:name="com.example.quickresponseapp.EmergencyPageFragment"
+        android:label="fragment_emergency_page"
+        tools:layout="@layout/fragment_emergency_page" />
 
 
 </navigation>

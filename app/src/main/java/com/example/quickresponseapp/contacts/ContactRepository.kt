@@ -15,4 +15,8 @@ class ContactRepository(private val contactDao: ContactDao) {
     suspend fun delete(contact: Contact) {
         contactDao.deleteContact(contact)
     }
+
+    suspend fun getDefaultContact(): Contact? {
+        return contactDao.getDefaultContact()
+    }
 }

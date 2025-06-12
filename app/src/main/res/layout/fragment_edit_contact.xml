@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/backgroundphoto"
     android:padding="16dp"
     tools:context="com.example.quickresponseapp.contacts.EditContactFragment">
@@ -18,23 +19,43 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <!-- Update profile picture -->
-            <FrameLayout
+            <!-- Back Button -->
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="16dp"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:focusable="true"
+                android:text="@string/back"
+                android:textColor="@color/mustard"
+                android:textSize="18sp" />
+
+            <!-- Update contact picture -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/contact_image"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/bg_profile_border"
-                android:padding="6dp">
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:contentDescription="Contact Image"
+                android:focusable="true"
+                android:padding="6dp"
+                android:src="@drawable/kaurihead"
+                app:civ_border_color="@color/mustard"
+                app:civ_border_width="3dp" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/profile_white_bg"
-                    android:clipToOutline="true"
-                    android:outlineProvider="background"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/kaurihead" />
-            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:text="@string/tap_to_upload_photo"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
 
             <!-- Page Title -->
             <TextView
@@ -42,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="EDIT CONTACT / WHAKATIKAHIA HOAPĀ"
+                android:text="@string/edit_contact"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -54,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
-                android:hint="NAME / INGOA"
+                android:hint="@string/hint_name"
                 android:padding="12dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="#9E9E9E"
@@ -67,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
-                android:hint="ADDRESS / WĀHI NOHO"
+                android:hint="@string/hint_address"
                 android:padding="12dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="#9E9E9E"
@@ -80,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
-                android:hint="PHONE NUMBER / NAMA WAEA"
+                android:hint="@string/hint_phone_number"
                 android:inputType="phone"
                 android:padding="12dp"
                 android:textColor="@android:color/black"
@@ -94,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_bg"
-                android:hint="RELATIONSHIP / HONONGA"
+                android:hint="@string/hint_relationship"
                 android:padding="12dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="#9E9E9E"
@@ -106,13 +127,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?" />
+                android:text="@string/text_oranga_tamariki" />
 
             <CheckBox
                 android:id="@+id/checkbox_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SET AS DEFAULT CONTACT?" />
+                android:text="@string/text_set_default_contact" />
 
             <!-- Save and Delete Button -->
             <LinearLayout
@@ -129,7 +150,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/mustard"
-                    android:text="SAVE"
+                    android:text="@string/button_save"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
@@ -140,7 +161,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/mustard"
-                    android:text="DELETE"
+                    android:text="@string/text_delete"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
             </LinearLayout>

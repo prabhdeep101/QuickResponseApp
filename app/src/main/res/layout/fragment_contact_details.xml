@@ -37,24 +37,16 @@
                 android:textSize="18sp" />
 
 
-            <!-- Contact profile picture wrapped in a frame -->
-            <FrameLayout
+            <!-- Contact picture -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/contactImageView"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_profile_border"
-                android:padding="6dp">
-
-                <ImageView
-                    android:id="@+id/image_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/profile_white_bg"
-                    android:clipToOutline="true"
-                    android:outlineProvider="background"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/kaurihead" />
-            </FrameLayout>
+                android:src="@drawable/kaurihead"
+                app:civ_border_width="3dp"
+                app:civ_border_color="@color/mustard"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"/>
 
             <!-- Contact name -->
             <TextView
@@ -72,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="ADDRESS / WĀHI NOHO"
+                android:text="@string/text_address"
                 android:textStyle="bold" />
 
             <TextView
@@ -88,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="PHONE NUMBER / NAMA WAEA"
+                android:text="@string/hint_phone_number"
                 android:textStyle="bold" />
 
             <TextView
@@ -104,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="RELATIONSHIP / HONONGA"
+                android:text="@string/hint_relationship"
                 android:textStyle="bold" />
 
             <TextView
@@ -121,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="THIS PERSON IS ORANGA TAMARIKI CERTIFIED"
+                android:text="@string/text_oranga_certified"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -130,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="THIS PERSON IS THE DEFAULT CONTACT"
+                android:text="@string/text_default_contact"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -155,7 +147,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/mustard"
-        android:text="EDIT"
+        android:text="@string/text_edit"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 

@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap image to upload photo"
+                android:text="@string/tap_to_upload_photo"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 android:layout_gravity="center"
@@ -48,7 +48,7 @@
 
             <!-- Section Title -->
             <TextView
-                android:text="REGISTRATION"
+                android:text="@string/registration_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -59,7 +59,7 @@
             <!-- Inputs -->
             <EditText
                 android:id="@+id/nameInput"
-                android:hint="NAME"
+                android:hint="@string/hint_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -70,7 +70,7 @@
 
             <EditText
                 android:id="@+id/birthdayInput"
-                android:hint="BIRTHDAY (DD/MM/YYYY)"
+                android:hint="@string/hint_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -83,7 +83,7 @@
 
             <EditText
                 android:id="@+id/addressInput"
-                android:hint="CURRENT ADDRESS"
+                android:hint="@string/hint_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -93,7 +93,7 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:text="CURRENT CAREGIVER"
+                android:text="@string/label_guardian"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
 
             <EditText
                 android:id="@+id/guardianName"
-                android:hint="NAME"
+                android:hint="@string/hint_guardian_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -115,7 +115,7 @@
 
             <EditText
                 android:id="@+id/guardianPhone"
-                android:hint="PHONE NUMBER"
+                android:hint="@string/hint_guardian_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="28dp"
@@ -127,7 +127,7 @@
 
             <CheckBox
                 android:id="@+id/orangaCheck"
-                android:text="IS THIS PERSON APPOINTED BY ORANGA TAMARIKI?"
+                android:text="@string/label_oranga_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -136,7 +136,7 @@
             <!-- Save Button -->
             <Button
                 android:id="@+id/saveButton"
-                android:text="SAVE"
+                android:text="@string/button_save"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
