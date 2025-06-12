@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.quickresponseapp.contacts.Contact
 import com.example.quickresponseapp.contacts.ContactsViewModel
 import com.example.quickresponseapp.profile.ProfileViewModel
@@ -62,7 +63,7 @@ class EmergencyPageFragment : Fragment(R.layout.fragment_emergency_page) {
 
         // 🔹 Navigation
         homeButton.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+            findNavController().navigate(R.id.homeScreenFragment)
         }
 
         backButton.setOnClickListener {
