@@ -73,6 +73,10 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
                 viewModel.onSaveClick()
             }
 
+            emergencyButton.setOnClickListener {
+                findNavController().navigate(R.id.action_addContactFragment_to_emergencyPageFragment)
+            }
+
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.contactsFragment)
             }

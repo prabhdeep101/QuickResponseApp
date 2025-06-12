@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -35,6 +36,7 @@ class MessagesFragment : Fragment() {
         val messageAllButton = view.findViewById<Button>(R.id.message_all_button)
         val backButton = view.findViewById<TextView>(R.id.back_button)
         val emptyPlaceholder = view.findViewById<TextView>(R.id.empty_placeholder)
+        val emergencyButton = view.findViewById<ImageButton>(R.id.emergency_button)
 
         // Load profile data
         lifecycleScope.launch {
@@ -77,6 +79,10 @@ class MessagesFragment : Fragment() {
 
         backButton.setOnClickListener {
             findNavController().navigateUp()
+        }
+
+        emergencyButton.setOnClickListener {
+            findNavController().navigate(R.id.action_messagesFragment_to_emergencyPageFragment)
         }
     }
 }

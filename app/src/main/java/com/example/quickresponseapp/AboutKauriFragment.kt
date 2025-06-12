@@ -20,9 +20,9 @@ class AboutKauriFragment : Fragment(R.layout.about_kauri) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Emergency button click → navigate to emergency screen
+        // Emergency call button
         view.findViewById<ImageButton>(R.id.emergency_button).setOnClickListener {
-            // Add emergency call nav
+            findNavController().navigate(R.id.action_aboutKauriFragment_to_emergencyPageFragment)
         }
 
         // Add a back button

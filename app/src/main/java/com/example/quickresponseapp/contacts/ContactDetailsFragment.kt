@@ -55,7 +55,7 @@ class ContactDetailsFragment : Fragment(R.layout.fragment_contact_details) {
             }
 
             emergencyButton.setOnClickListener {
-                // Optional: handle emergency action
+                findNavController().navigate(R.id.action_contactDetailsFragment_to_emergencyPageFragment)
             }
         }
     }

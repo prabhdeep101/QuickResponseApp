@@ -88,6 +88,10 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
                 findNavController().navigate(R.id.contactsFragment)
             }
 
+            emergencyButton.setOnClickListener {
+                findNavController().navigate(R.id.action_editContactFragment_to_emergencyPageFragment)
+            }
+
             // Set the image if it exists
             if (!viewModel.contactImageUri.isNullOrEmpty()) {
                 contactImageView.setImageURI(Uri.parse(viewModel.contactImageUri))

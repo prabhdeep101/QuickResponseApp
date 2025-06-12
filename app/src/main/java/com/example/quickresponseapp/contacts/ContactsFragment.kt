@@ -49,7 +49,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactsAdapter.O
 
         // Emergency call button
         view.findViewById<View>(R.id.emergency_button).setOnClickListener {
-            // navigate to emergency call screen
+            findNavController().navigate(R.id.action_contactsFragment_to_emergencyPageFragment)
         }
     }
 
