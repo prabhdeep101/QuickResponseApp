@@ -2,25 +2,31 @@
 
     <item
         android:id="@+id/homeScreenFragment"
-        android:title="@string/title_home"/>
+        android:title="@string/title_home"
+        android:icon="@drawable/home"/>
 
     <item
         android:id="@+id/editProfileFragment"
-        android:title="@string/Pop_out_edit_profile"/>
+        android:title="@string/Pop_out_edit_profile"
+        android:icon="@drawable/edit"/>
 
     <item
         android:id="@+id/contactsFragment"
-        android:title="@string/contacts" />
+        android:title="@string/contacts"
+        android:icon="@drawable/contact"/>
 
     <item
         android:id="@+id/messagesFragment"
-        android:title="@string/messages" />
+        android:title="@string/messages"
+        android:icon="@drawable/message"/>
 
     <item
         android:id="@+id/settingsFragment"
-        android:title="@string/settings"/>
+        android:title="@string/settings"
+        android:icon="@drawable/settings"/>
 
     <item
         android:id="@+id/aboutKauriFragment"
-        android:title="@string/about_kauri"/>
+        android:title="@string/about_kauri"
+        android:icon="@drawable/info"/>
 </menu>
