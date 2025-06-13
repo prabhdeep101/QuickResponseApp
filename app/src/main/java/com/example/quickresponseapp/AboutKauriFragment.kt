@@ -14,7 +14,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class AboutKauriFragment : Fragment(R.layout.about_kauri) {
 
+    // Set the saved locale
     override fun onAttach(context: Context) {
+        // Apply saved language preference
         super.onAttach(AppPreferences.applySavedLocale(context))
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +27,7 @@ class AboutKauriFragment : Fragment(R.layout.about_kauri) {
             findNavController().navigate(R.id.action_aboutKauriFragment_to_emergencyPageFragment)
         }
 
-        // Add a back button
+        // Back button moves back a screen
         view.findViewById<TextView>(R.id.back_button).setOnClickListener {
             findNavController().navigateUp()
         }

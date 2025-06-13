@@ -23,15 +23,19 @@ import java.io.File
 
 @AndroidEntryPoint
 class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
-
+    // ViewModel to hold the user data
     private val viewModel: AddEditContactViewModel by viewModels()
+    // Reference contact image
     private lateinit var contactImageView: CircleImageView
-    private var selectedImageUri: String? = null
 
+    // Stores URI of contact picture
+    private var selectedImageUri: String? = null
+    // Picking an image from photo gallery
     private val imagePickerLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri ->
         uri?.let {
+            // Save contact image to internal storage and update the image
             val savedPath = viewModel.saveImageToInternalStorage(requireContext(), it)
             if (savedPath != null) {
                 contactImageView.setImageURI(Uri.fromFile(File(savedPath)))
@@ -47,7 +51,7 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
         contactImageView = binding.contactImage
 
         binding.apply {
-            // Load saved state values
+            // Populate with saved state from viewModel
             addContactname.setText(viewModel.contactName)
             addContactphone.setText(viewModel.contactPhone)
             addContactaddress.setText(viewModel.contactAddress)
@@ -55,12 +59,13 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
             checkboxOranga.isChecked = viewModel.isOrangaTamarikiApproved
             checkboxDefault.isChecked = viewModel.isDefault
 
-            // Listeners
+            // Save user input into viewModel when text changes
             addContactname.addTextChangedListener { viewModel.contactName = it.toString() }
             addContactphone.addTextChangedListener { viewModel.contactPhone = it.toString() }
             addContactaddress.addTextChangedListener { viewModel.contactAddress = it.toString() }
             addContactrelationship.addTextChangedListener { viewModel.contactRelation = it.toString() }
 
+            // Save the checked states
             checkboxOranga.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.isOrangaTamarikiApproved = isChecked
             }
@@ -69,36 +74,42 @@ class AddContactFragment : Fragment(R.layout.fragment_add_contact) {
                 viewModel.isDefault = isChecked
             }
 
+            // Saves the contact details with save button
             buttonSave.setOnClickListener {
                 viewModel.onSaveClick()
             }
 
+            // Navigate to emergency call screen
             emergencyButton.setOnClickListener {
                 findNavController().navigate(R.id.action_addContactFragment_to_emergencyPageFragment)
             }
 
+            // Navigate back to the contacts page
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.contactsFragment)
             }
 
+            // Launch image picker when profile image is clicked (select image from gallery)
             contactImageView.setOnClickListener {
                 imagePickerLauncher.launch("image/*")
             }
 
-            // Load image if previously selected
+            // Load image if one is saved
             if (!viewModel.contactImageUri.isNullOrEmpty()) {
                 contactImageView.setImageURI(Uri.parse(viewModel.contactImageUri))
             }
         }
 
-        // Handle ViewModel events
+        // Listen for any events from viewModel
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addEditContactEvent.collect { event ->
                     when (event) {
+                        // Show message if input is invalid
                         is AddEditContactViewModel.AddEditContactEvent.ShowInvalidInputMessage -> {
                             Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
                         }
+                        // Navigate back and pass the result if the contact was saved
                         is AddEditContactViewModel.AddEditContactEvent.NavigateBackWithResult -> {
                             binding.addContactname.clearFocus()
                             setFragmentResult(

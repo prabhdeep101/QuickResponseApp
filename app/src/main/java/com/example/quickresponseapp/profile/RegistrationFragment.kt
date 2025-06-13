@@ -18,21 +18,24 @@ import java.util.*
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
-
+    // ViewModel to handle saving profile
     private val viewModel: ProfileViewModel by viewModels()
+    // Image view for profile
     private lateinit var profileImageView: CircleImageView
+    // Stores URI of profile picture
     private var selectedImagePath: String? = null
 
+    // Picking an image from photo gallery
     private val imagePickerLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri ->
         uri?.let {
             profileImageView.setImageURI(it)
-            selectedImagePath = it.toString() // or convert to file path if needed
+            selectedImagePath = it.toString()
         }
     }
 
-
+    // Inflate registration layout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +44,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Reference views
         val nameInput = view.findViewById<EditText>(R.id.nameInput)
         val birthdayInput = view.findViewById<EditText>(R.id.birthdayInput)
         val addressInput = view.findViewById<EditText>(R.id.addressInput)
@@ -50,19 +54,20 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         val saveButton = view.findViewById<Button>(R.id.saveButton)
 
         profileImageView = view.findViewById(R.id.profileImage)
-
+        // Launch image picker when profile image is clicked (select image from gallery)
         profileImageView.setOnClickListener {
             imagePickerLauncher.launch("image/*")
         }
 
+        // Setup birthday field to open datepicker
         birthdayInput.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
-
+            // Show date picker
             val datePicker = DatePickerDialog(requireContext(), { _, y, m, d ->
-                // Format selected date as DD/MM/YYYY
+                // Format DD/MM/YYYY
                 val formatted = String.format("%02d/%02d/%04d", d, m + 1, y)
                 birthdayInput.setText(formatted)
             }, year, month, day)
@@ -70,6 +75,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             datePicker.show()
         }
 
+        // Handle the save button click
         saveButton.setOnClickListener {
             val name = nameInput.text.toString().trim()
             val address = addressInput.text.toString().trim()
@@ -85,6 +91,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 null
             }
 
+            // Validate input fields
             if (name.isEmpty() || birthdayStr.isEmpty() || birthday == null || address.isEmpty() ||
                 caregiverName.isEmpty() || caregiverPhone.isEmpty()
             ) {
@@ -96,6 +103,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 return@setOnClickListener
             }
 
+            // Create and save new user profile
             val profile = UserProfile(
                 id = 0,
                 name = name,
@@ -109,6 +117,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
             viewModel.saveProfile(profile)
 
+            // Show profile saved toast and navigate to home screen
             Toast.makeText(requireContext(), "Profile saved", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.homeScreenFragment)
         }

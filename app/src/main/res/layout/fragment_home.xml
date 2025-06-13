@@ -70,7 +70,7 @@
         android:layout_width="185dp"
         android:layout_height="185dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="2dp"
         android:backgroundTint="#dda036"
         android:elevation="10dp"
         android:paddingTop="15dp"
@@ -85,14 +85,16 @@
         app:iconSize="110dp"
         app:iconTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintEnd_toStartOf="@id/contacts_button"
+        app:layout_constraintTop_toBottomOf="@id/talk_to_kauri"
+        app:layout_constraintHorizontal_chainStyle="spread" />
 
     <!-- Contacts button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/contacts_button"
         android:layout_width="185dp"
         android:layout_height="185dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#dda036"
         android:elevation="10dp"
@@ -106,8 +108,9 @@
         app:iconPadding="12dp"
         app:iconSize="120dp"
         app:iconTint="@color/white"
+        app:layout_constraintStart_toEndOf="@id/message_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/talk_to_kauri" />
 
     <!-- Emergency and Settings buttons -->
     <ImageButton

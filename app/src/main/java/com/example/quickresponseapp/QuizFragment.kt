@@ -10,20 +10,24 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 class QuizFragment : Fragment(R.layout.fragment_quiz) {
-
+    // User interface components
     private lateinit var questionText: TextView
     private lateinit var kauriImage: ImageView
     private lateinit var yesButton: Button
     private lateinit var noButton: Button
 
+    // Track current question
     private var currentIndex = 0
+    // Store users answers
     private val answers = mutableListOf<String>()
 
+    // Data class for holding the question and image
     data class Question(
         val text: String,
         val imageResId: Int
     )
 
+    // List of all questions and their images
     private val questions by lazy {
         listOf(
             Question(requireContext().getString(R.string.question_are_you_safe), R.drawable.kaurileftwing),
@@ -40,14 +44,15 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        // Initialise views
         questionText = view.findViewById(R.id.questionText)
         kauriImage = view.findViewById(R.id.birdImage)
         yesButton = view.findViewById(R.id.yesButton)
         noButton = view.findViewById(R.id.noButton)
 
+        // Load the first question
         loadQuestion()
-
+        // Set button click actions
         yesButton.setOnClickListener { handleAnswer("Yes") }
         noButton.setOnClickListener { handleAnswer("No") }
 
@@ -78,17 +83,19 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
         }
     }
 
+    // Loads current question and updates screen
     private fun loadQuestion() {
         val q = questions[currentIndex]
         questionText.text = q.text
         kauriImage.setImageResource(q.imageResId)
     }
 
+    // Handles answers
     private fun handleAnswer(answer: String) {
         answers.add(answer)
         currentIndex = getNextIndex(currentIndex, answer)
 
-        // If we reached a terminal state (emergency or result), trigger:
+        // If we reached special state
         if (currentIndex == -1) {
             showEmergencyCall("Police")
             return

@@ -15,13 +15,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddEditContactViewModel @Inject constructor(
+    // Access to the database operations
     private val contactDao: ContactDao,
+    // Retain UI state
     private val state: SavedStateHandle
 ) : ViewModel() {
 
+    // Retrieve existing contact from save if editing
     val contact = state.get<Contact>("contact")
+    // Holds URI for contact image
     var contactImageUri: String? = null
 
+    // Fields bound to input from user and saved state if editing
     var contactName = state.get<String>("contactName") ?: contact?.name ?: ""
         set(value) {
             field = value
@@ -57,10 +62,13 @@ class AddEditContactViewModel @Inject constructor(
             state.set("isDefault", value)
         }
 
+    // Channel for sending events
     private val addEditContactEventChannel = Channel<AddEditContactEvent>()
     val addEditContactEvent = addEditContactEventChannel.receiveAsFlow()
 
+    // Called when the save button is clicked
     fun onSaveClick() {
+        // Validate the fields (make sure there is input in name, phone, and relation)
         if (contactName.isBlank()) {
             showInvalidInputMessage("Name cannot be empty")
             return
@@ -76,6 +84,7 @@ class AddEditContactViewModel @Inject constructor(
             return
         }
 
+        // If editing, update existing contact
         if (contact != null) {
             val updatedContact = contact.copy(
                 name = contactName,
@@ -89,6 +98,7 @@ class AddEditContactViewModel @Inject constructor(
             updateContact(updatedContact)
         } else {
             val newContact = Contact(
+                // Otherwise create a new contact
                 name = contactName,
                 phone = contactPhone,
                 address = contactAddress,
@@ -101,6 +111,7 @@ class AddEditContactViewModel @Inject constructor(
         }
     }
 
+    // Save selected image to internal storage
     fun saveImageToInternalStorage(context: Context, uri: Uri): String? {
         return try {
             val inputStream = context.contentResolver.openInputStream(uri)
@@ -118,6 +129,7 @@ class AddEditContactViewModel @Inject constructor(
         }
     }
 
+    // Delete contact and navigate back to contacts screen
     fun onDeleteClick(contact: Contact) {
         viewModelScope.launch {
             contactDao.deleteContact(contact)
@@ -125,20 +137,24 @@ class AddEditContactViewModel @Inject constructor(
         }
     }
 
+    // Insert new contact and navigate back to contacts page
     private fun createContact(contact: Contact) = viewModelScope.launch {
         contactDao.insertContact(contact)
         addEditContactEventChannel.send(AddEditContactEvent.NavigateBackWithResult(ADD_CONTACT_RESULT_OK))
     }
 
+    // Update the existing contact and navigate back to contacts page
     private fun updateContact(contact: Contact) = viewModelScope.launch {
         contactDao.insertContact(contact)
         addEditContactEventChannel.send(AddEditContactEvent.NavigateBackWithResult(EDIT_CONTACT_RESULT_OK))
     }
 
+    // Send the invalidation message to the user
     private fun showInvalidInputMessage(text: String) = viewModelScope.launch {
         addEditContactEventChannel.send(AddEditContactEvent.ShowInvalidInputMessage(text))
     }
 
+    // Event class to communicate with user interface
     sealed class AddEditContactEvent {
         data class ShowInvalidInputMessage(val msg: String) : AddEditContactEvent()
         data class NavigateBackWithResult(val result: Int) : AddEditContactEvent()

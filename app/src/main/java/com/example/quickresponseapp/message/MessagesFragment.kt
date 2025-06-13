@@ -21,10 +21,12 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MessagesFragment : Fragment() {
-
+    // ViewModel that provides list of contacts
     private val viewModel: MessagesViewModel by viewModels()
+    // Adapter to display contacts in RecyclerView
     private lateinit var messagesAdapter: MessagesAdapter
 
+    // Inflate layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -32,13 +34,14 @@ class MessagesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Get references to user interface components
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_messages)
         val messageAllButton = view.findViewById<Button>(R.id.message_all_button)
         val backButton = view.findViewById<TextView>(R.id.back_button)
         val emptyPlaceholder = view.findViewById<TextView>(R.id.empty_placeholder)
         val emergencyButton = view.findViewById<ImageButton>(R.id.emergency_button)
 
-        // Load profile data
+        // Load profile data from database
         lifecycleScope.launch {
             val profileDao = com.example.quickresponseapp.profile.ProfileDatabase
                 .getDatabase(requireContext())
@@ -47,7 +50,7 @@ class MessagesFragment : Fragment() {
             val profile = profileDao.getProfile()
             val childName = profile?.name ?: "your child"
 
-            // Initialize adapter with loaded name
+            // Initialize adapter with child name for text message
             messagesAdapter = MessagesAdapter(requireContext(), childName) { contact ->
                 val intent = Intent(Intent.ACTION_VIEW).apply {
                     data = Uri.parse("sms:${contact.phone}")
@@ -56,15 +59,20 @@ class MessagesFragment : Fragment() {
                 startActivity(intent)
             }
 
+            // Set up RecyclerView
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = messagesAdapter
 
+            // Observe contact list updates
             viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
+                // Sort so default shows at the top
                 val sorted = contacts.sortedByDescending { it.isDefault }
                 messagesAdapter.submitList(sorted)
 
+                // Show placeholder if list is empty
                 emptyPlaceholder.visibility = if (sorted.isEmpty()) View.VISIBLE else View.GONE
 
+                // Set up message all button to send text to all contacts
                 messageAllButton.setOnClickListener {
                     for (contact in sorted) {
                         val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -77,10 +85,12 @@ class MessagesFragment : Fragment() {
             }
         }
 
+        // Navigate to previous screen
         backButton.setOnClickListener {
             findNavController().navigateUp()
         }
 
+        // Navigate to emergency call screen
         emergencyButton.setOnClickListener {
             findNavController().navigate(R.id.action_messagesFragment_to_emergencyPageFragment)
         }

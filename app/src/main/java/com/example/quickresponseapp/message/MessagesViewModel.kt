@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MessagesViewModel @Inject constructor(
-    private val contactDao: ContactDao
+    private val contactDao: ContactDao // access contact data
 ) : ViewModel() {
+    // LiveData list of all contacts
     val contacts: LiveData<List<Contact>> = contactDao.getAllContacts()
 }

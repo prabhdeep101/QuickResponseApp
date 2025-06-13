@@ -13,6 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    // Provides a singleton instance of Room database
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): ContactDatabase =
@@ -20,6 +21,7 @@ object AppModule {
             .fallbackToDestructiveMigration()
             .build()
 
+    // Provides DAO from database
     @Provides
     fun provideContactDao(db: ContactDatabase): ContactDao = db.contactDao()
 }

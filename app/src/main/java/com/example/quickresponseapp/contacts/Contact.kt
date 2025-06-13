@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+// Room entity with table name contact
 @Entity(tableName = "contact")
 data class Contact(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -16,4 +17,4 @@ data class Contact(
     val isDefault: Boolean = false,
     val isOrangaTamarikiApproved: Boolean = false,
     val photoUri: String? = null
-) : Parcelable
+) : Parcelable // Allows data to be passed in bundles

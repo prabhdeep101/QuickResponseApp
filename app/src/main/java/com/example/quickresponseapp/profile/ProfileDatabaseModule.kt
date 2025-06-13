@@ -13,6 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ProfileDatabaseModule {
 
+    // Provides a singleton instance of profile database
     @Provides
     @Singleton
     fun provideProfileDatabase(@ApplicationContext appContext: Context): ProfileDatabase {
@@ -23,6 +24,7 @@ object ProfileDatabaseModule {
         ).fallbackToDestructiveMigration().build()
     }
 
+    // Provides instance of ProfileDao using the profile database
     @Provides
     fun provideProfileDao(db: ProfileDatabase): ProfileDao {
         return db.profileDao()

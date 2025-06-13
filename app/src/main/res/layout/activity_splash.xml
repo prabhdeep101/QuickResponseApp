@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fullbackground">
 
+    <!-- Image of our logo -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="180dp"
@@ -16,6 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="150dp" />
 
+    <!-- AWAI app name -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -29,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
+    <!-- App Name -->
     <TextView
         android:id="@+id/subtitleText"
         android:layout_width="wrap_content"

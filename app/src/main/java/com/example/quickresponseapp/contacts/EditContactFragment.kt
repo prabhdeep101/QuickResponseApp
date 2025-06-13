@@ -25,14 +25,18 @@ import java.io.File
 @AndroidEntryPoint
 class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
+    // ViewModel shared for editing contact
     private val viewModel: AddEditContactViewModel by viewModels()
+    // Argument passed from navigation with contact to be edited
     private val args: EditContactFragmentArgs by navArgs()
-    private lateinit var contactImageView: CircleImageView
 
+    private lateinit var contactImageView: CircleImageView
+    // Picking an image from photo gallery
     private val imagePickerLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri ->
         uri?.let {
+            // Save contact image to internal storage and update the image
             val savedPath = viewModel.saveImageToInternalStorage(requireContext(), it)
             if (savedPath != null) {
                 contactImageView.setImageURI(Uri.fromFile(File(savedPath)))
@@ -43,11 +47,13 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentEditContactBinding.bind(view)
+
+        // Retrieve contact
         val contact = args.contact
 
         contactImageView = binding.contactImage
 
-        // Pre-fill the contact data
+        // Pre-fill the existing contact data
         viewModel.contactName = contact.name
         viewModel.contactPhone = contact.phone
         viewModel.contactAddress = contact.address
@@ -56,6 +62,7 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
         viewModel.isDefault = contact.isDefault
 
         binding.apply {
+            // Populate input fields with existing values
             editName.setText(viewModel.contactName)
             editPhone.setText(viewModel.contactPhone)
             editAddress.setText(viewModel.contactAddress)
@@ -63,11 +70,13 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
             checkboxOranga.isChecked = viewModel.isOrangaTamarikiApproved
             checkboxDefault.isChecked = viewModel.isDefault
 
+            // Save updates on text changes
             editName.addTextChangedListener { viewModel.contactName = it.toString() }
             editPhone.addTextChangedListener { viewModel.contactPhone = it.toString() }
             editAddress.addTextChangedListener { viewModel.contactAddress = it.toString() }
             editRelationship.addTextChangedListener { viewModel.contactRelation = it.toString() }
 
+            // Save checkbox states to ViewModel
             checkboxOranga.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.isOrangaTamarikiApproved = isChecked
             }
@@ -76,18 +85,22 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
                 viewModel.isDefault = isChecked
             }
 
+            // Save button to save updates
             buttonSave.setOnClickListener {
                 viewModel.onSaveClick()
             }
 
+            // Launch image picker when profile image is clicked (select image from gallery)
             contactImageView.setOnClickListener {
                 imagePickerLauncher.launch("image/*")
             }
 
+            // Back button back to contacts page
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.contactsFragment)
             }
 
+            // Navigate to emergency call page
             emergencyButton.setOnClickListener {
                 findNavController().navigate(R.id.action_editContactFragment_to_emergencyPageFragment)
             }
@@ -102,13 +115,16 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
             }
         }
 
+        // Listen for any events from viewModel
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addEditContactEvent.collect { event: AddEditContactViewModel.AddEditContactEvent ->
                     when (event) {
+                        // Show message if input is invalid
                         is AddEditContactViewModel.AddEditContactEvent.ShowInvalidInputMessage -> {
                             Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
                         }
+                        // Navigate back and pass the result if the contact was saved
                         is AddEditContactViewModel.AddEditContactEvent.NavigateBackWithResult -> {
                             binding.editName.clearFocus()
                             setFragmentResult(

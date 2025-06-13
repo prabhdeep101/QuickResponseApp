@@ -63,7 +63,7 @@
 
         <Button
             android:id="@+id/edit_profile_btn"
-            android:layout_width="185dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
@@ -72,6 +72,7 @@
             android:minHeight="204dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/edit_profile"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -82,14 +83,17 @@
             app:iconSize="110dp"
             app:iconTint="@null"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text1" />
+            app:layout_constraintEnd_toStartOf="@+id/edit_contact_btn"
+            app:layout_constraintTop_toBottomOf="@id/text1"
+            app:layout_constraintHorizontal_chainStyle="spread" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_contact_btn"
-            android:layout_width="185dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
             android:backgroundTint="#dda036"
             android:elevation="10dp"
             android:minHeight="185dp"
@@ -104,6 +108,7 @@
             app:iconPadding="8dp"
             app:iconSize="110dp"
             app:iconTint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/edit_profile_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text1" />
 

@@ -27,54 +27,59 @@ import java.io.File
 
 @AndroidEntryPoint
 class EmergencyPageFragment : Fragment(R.layout.fragment_emergency_page) {
+    // ViewModels for accessing profile and contacts data
     private val contactsViewModel: ContactsViewModel by viewModels()
     private val profileViewModel: ProfileViewModel by activityViewModels()
+
+    // Stores guardians phone number and childs name (profile name)
     private var guardianPhone: String? = null
     private var childName: String = "Your child"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Emergency call buttons
         val policeCall = view.findViewById<MaterialButton>(R.id.callPoliceBtn)
         val ambulanceCall = view.findViewById<MaterialButton>(R.id.callAmbulanceBtn)
         val guardianCall = view.findViewById<CircleImageView>(R.id.guardianImage)
-
+        // Emergency Message buttons
         val msgPolice = view.findViewById<MaterialButton>(R.id.kauricallPoliceBtn)
         val msgAmbulance = view.findViewById<MaterialButton>(R.id.kauricallAmbulanceBtn)
         val msgGuardian = view.findViewById<CircleImageView>(R.id.kauriguardianImage)
-
+        // Navigation buttons
         val homeButton = view.findViewById<ImageButton>(R.id.home_button)
         val backButton = view.findViewById<TextView>(R.id.back_button)
 
-        // 🔹 Call listeners – work even if profile hasn’t loaded yet
+        // Set call button actions
         policeCall.setOnClickListener { dialPhone("111") }
         ambulanceCall.setOnClickListener { dialPhone("111") }
         guardianCall.setOnClickListener { guardianPhone?.let { dialPhone(it) } }
 
-        // 🔹 Message button listeners – always bound
+        // Load profile data for message buttons
         profileViewModel.getProfile { profile ->
             profile?.let {
                 childName = it.name
-
-                // Now set the SMS listeners, after name is loaded
+                // Set message button actions with childs name
                 msgPolice.setOnClickListener { sendEmergencySms("POLICE") }
                 msgAmbulance.setOnClickListener { sendEmergencySms("AMBULANCE") }
                 msgGuardian.setOnClickListener { sendEmergencySms("GUARDIAN") }
             }
         }
 
-        // 🔹 Navigation
+        // Navigate to home screen
         homeButton.setOnClickListener {
             findNavController().navigate(R.id.homeScreenFragment)
         }
 
+        // Navigate to previous page
         backButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        // 🔹 Load guardian contact image and phone
+        // Load guardian/contacts image and phone number
         lifecycleScope.launch {
             val defaultContact: Contact? = contactsViewModel.getDefaultContact()
             guardianPhone = defaultContact?.phone
 
+            // Load custom image or fall back to default
             val guardianDrawable: Drawable? = if (defaultContact?.photoUri.isNullOrEmpty()) {
                 ContextCompat.getDrawable(requireContext(), R.drawable.kaurihead)
             } else {
@@ -88,14 +93,14 @@ class EmergencyPageFragment : Fragment(R.layout.fragment_emergency_page) {
                     ContextCompat.getDrawable(requireContext(), R.drawable.kaurihead)
                 }
             }
-
+            // Set contacts image to both buttons
             guardianDrawable?.let {
                 guardianCall.setImageDrawable(it)
                 msgGuardian.setImageDrawable(it)
             }
         }
 
-        // 🔹 Load child’s name (used in SMS)
+        // Load the childs name
         profileViewModel.getProfile { profile ->
             profile?.let {
                 childName = it.name
@@ -103,6 +108,7 @@ class EmergencyPageFragment : Fragment(R.layout.fragment_emergency_page) {
         }
     }
 
+    // Send emergency message to default contact based on type
     private fun sendEmergencySms(type: String) {
         guardianPhone?.let {
             val message = when (type) {
@@ -115,11 +121,13 @@ class EmergencyPageFragment : Fragment(R.layout.fragment_emergency_page) {
         }
     }
 
+    // Opens phone app with matching phone number
     private fun dialPhone(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
         startActivity(intent)
     }
 
+    // Opens text app with prefilled number and message
     private fun sendSms(phoneNumber: String, message: String) {
         val intent = Intent(Intent.ACTION_VIEW).apply {
             data = Uri.parse("sms:$phoneNumber")
