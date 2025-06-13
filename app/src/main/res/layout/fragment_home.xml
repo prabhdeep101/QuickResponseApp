@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundphoto">
 
-    <!-- Image & Text -->
+    <!-- Top Image and Text -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="160dp"
@@ -14,23 +14,24 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="32dp"
         android:src="@drawable/kaurisitting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/greeting_kauri"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/imageView" />
 
-    <!-- Talk to Kauri Button -->
     <TextView
         android:id="@+id/text2"
         android:layout_width="wrap_content"
@@ -38,19 +39,19 @@
         android:text="@string/help_prompt"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@id/text1"
-        app:layout_constraintTop_toBottomOf="@id/text1" />
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintStart_toStartOf="@id/text1" />
 
+    <!-- Talk to Kauri -->
     <Button
         android:id="@+id/talk_to_kauri"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#dda036"
         android:elevation="10dp"
-        android:paddingRight="40dp"
         android:text="@string/talk_to_kauri"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -60,59 +61,72 @@
         app:iconGravity="textStart"
         app:iconSize="80sp"
         app:iconTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Message button -->
-    <Button
+    <!-- Horizontal Chain: Messages & Contacts -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical" />
+
+    <!-- Message Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/message_button"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:minWidth="0dp"
+        android:minHeight="160dp"
         android:backgroundTint="#dda036"
         android:elevation="10dp"
-        android:paddingTop="15dp"
         android:text="@string/messages"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="8dp"
         app:icon="@drawable/baseline_text_snippet_24"
         app:iconGravity="top"
-        app:iconPadding="11dp"
-        app:iconSize="110dp"
+        app:iconPadding="8dp"
+        app:iconSize="80dp"
         app:iconTint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/contacts_button"
         app:layout_constraintTop_toBottomOf="@id/talk_to_kauri"
-        app:layout_constraintHorizontal_chainStyle="spread" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/contacts_button" />
 
-    <!-- Contacts button -->
+    <!-- Contacts Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/contacts_button"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:minWidth="0dp"
+        android:minHeight="160dp"
         android:backgroundTint="#dda036"
         android:elevation="10dp"
         android:text="@string/contacts"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="8dp"
         app:icon="@drawable/baseline_menu_book_24"
         app:iconGravity="top"
-        app:iconPadding="12dp"
-        app:iconSize="120dp"
+        app:iconPadding="8dp"
+        app:iconSize="80dp"
         app:iconTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/talk_to_kauri"
         app:layout_constraintStart_toEndOf="@id/message_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/talk_to_kauri" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Emergency and Settings buttons -->
+
+    <!-- Emergency Button -->
     <ImageButton
         android:id="@+id/emergency_button"
         android:layout_width="65dp"
@@ -125,6 +139,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Settings Button -->
     <ImageButton
         android:id="@+id/settings_button"
         android:layout_width="60dp"
@@ -138,4 +153,3 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
