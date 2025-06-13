@@ -68,7 +68,7 @@
     <!-- MESSAGE ALL Button -->
     <Button
         android:id="@+id/message_all_button"
-        android:layout_width="200dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/message_all"
         android:textStyle="bold"
