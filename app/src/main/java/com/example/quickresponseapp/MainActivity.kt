@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set up global banner and menu button
         val bannerView = findViewById<View>(R.id.global_banner)
-        val menuButton = bannerView.findViewById<ImageButton>(R.id.menu_button)
+        val menuButton = findViewById<ImageButton>(R.id.menu_button)
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.END)
         }
@@ -106,6 +106,10 @@ class MainActivity : AppCompatActivity() {
                 else -> View.VISIBLE
             }
         }
+
+        // Add footer to drawer
+        val footerView = layoutInflater.inflate(R.layout.nav_footer, navigationView, false)
+        navigationView.addView(footerView)
     }
 }
 

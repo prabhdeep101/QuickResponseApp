@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Global banner -->
         <include
             android:id="@+id/global_banner"
             layout="@layout/layout_global_banner"
@@ -18,7 +17,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Fragment container -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -32,10 +30,10 @@
             app:defaultNavHost="true" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Drawer Navigation -->
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/DarkBlue"
@@ -45,5 +43,4 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:itemVerticalPadding="18dp" />
-
 </androidx.drawerlayout.widget.DrawerLayout>
