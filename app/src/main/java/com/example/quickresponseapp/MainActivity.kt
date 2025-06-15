@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.messagesFragment -> navController.navigate(R.id.messagesFragment)
                 R.id.settingsFragment -> navController.navigate(R.id.settingsFragment)
                 R.id.aboutKauriFragment -> navController.navigate(R.id.aboutKauriFragment)
+                R.id.tutorialFragment -> navController.navigate(R.id.tutorialFragment)
             }
             // Close after selection
             drawerLayout.closeDrawer(GravityCompat.END)

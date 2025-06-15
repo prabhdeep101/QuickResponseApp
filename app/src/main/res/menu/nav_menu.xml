@@ -29,4 +29,9 @@
         android:id="@+id/aboutKauriFragment"
         android:title="@string/about_kauri"
         android:icon="@drawable/info"/>
+
+    <item
+        android:id="@+id/tutorialFragment"
+        android:title="Tutorials"
+        android:icon="@drawable/icon_video"/>
 </menu>

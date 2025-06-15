@@ -167,6 +167,11 @@
         android:name="com.example.quickresponseapp.EmergencyPageFragment"
         android:label="fragment_emergency_page"
         tools:layout="@layout/fragment_emergency_page" />
+    <fragment
+        android:id="@+id/tutorialFragment"
+        android:name="com.example.quickresponseapp.TutorialFragment"
+        android:label="fragment_tutorial"
+        tools:layout="@layout/fragment_tutorial" />
 
 
 </navigation>
