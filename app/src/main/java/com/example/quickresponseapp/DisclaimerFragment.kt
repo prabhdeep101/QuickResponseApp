@@ -35,7 +35,7 @@ class DisclaimerFragment : Fragment(R.layout.fragment_disclaimer) {
         lifecycleScope.launch {
             val lang = AppPreferences.getLanguage(requireContext())
             isEnglish = lang == "en"
-            btnToggle.text = if (isEnglish) "Māori" else "English"
+            btnToggle.text = if (isEnglish) "Te Reo Māori" else "English"
         }
 
         // Toggle button changes language and recreates the activity
